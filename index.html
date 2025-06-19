@@ -1,13 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <meta name="keywords" content="pokemon PokeApi jcromanDev jcroman.dev" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+    />
+    <title>Pokedex App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <header class="header container">
+      <div class="header__controls">
+        <div class="header__logo">
+          <img src="./Pokedex_logo.png" alt="Pokemon logo" />
+        </div>
+        <div class="header__searchPokemon">
+          <select id="cmbPokemon" class="header__cmb">
+            <option value="" selected>-- Choose a generation --</option>
+            <option value="0">All Generations</option>
+            <option value="1">1º Generation</option>
+            <option value="2">2º Generation</option>
+            <option value="3">3º Generation</option>
+            <option value="4">4º Generation</option>
+            <option value="5">5º Generation</option>
+            <option value="6">6º Generation</option>
+            <option value="7">7º Generation</option>
+            <option value="8">8º Generation</option>
+            <option value="9">9º Generation</option>
+          </select>
+          <div class="header__search">
+            <input
+              type="text"
+              id="inputPokemon"
+              class="header__input"
+              placeholder="Type a pokemon ID/Name"
+            />
+            <button class="header__btn-search" type="submit" id="btnSearch">
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <button class="btn header__btn" id="all">All</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn normal" id="normal">Normal</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn fire" id="fire">Fire</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn water" id="water">Water</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn grass" id="grass">Grass</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn electric" id="electric">
+              Electric
+            </button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn ice" id="ice">Ice</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn fighting" id="fighting">
+              Fighting
+            </button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn poison" id="poison">Poison</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn ground" id="ground">Ground</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn flying" id="flying">Flying</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn psychic" id="psychic">
+              Psychic
+            </button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn bug" id="bug">Bug</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn rock" id="rock">Rock</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn ghost" id="ghost">Ghost</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn dark" id="dark">Dark</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn dragon" id="dragon">Dragon</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn steel" id="steel">Steel</button>
+          </li>
+          <li class="header__nav-item">
+            <button class="btn header__btn fairy" id="fairy">Fairy</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
