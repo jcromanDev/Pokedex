@@ -1,5 +1,5 @@
 :root {
-  --crl-black: #1c1c1c;
+  --clr-black: #1c1c1c;
   --clr-gray: #ecececec;
   --clr-white: #f7f7f7f7;
 
@@ -56,7 +56,7 @@ html {
 body {
   font-family: "General Sans", sans-serif;
   min-height: 100vh;
-  background-color: var(--clr-gray);
+  background-color: var(--clr-white);
   color: var(--clr-black);
 }
 
