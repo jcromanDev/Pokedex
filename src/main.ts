@@ -5,4 +5,8 @@ import "./style/components/pokemon.css";
 import "./style/components/footer.css";
 import "./style/components/mobile-nav.css";
 
+import mobileNav from "./utils/mobile-nav";
+
 import "./style/utils.css";
+
+mobileNav();

@@ -5,7 +5,7 @@
   width: 100%;
   box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, 0.5);
   position: relative;
-  z-index: 9999;
+  z-index: 999;
 }
 
 .header__nav {
