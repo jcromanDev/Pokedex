@@ -1,6 +1,7 @@
 :root {
   --clr-black: #1c1c1c;
   --clr-gray: #ecececec;
+  --clr-dark-gray: #9c9c9c;
   --clr-white: #f7f7f7f7;
 
   --clr-btn-back: linear-gradient(to right, #dad993, #ddc124);
@@ -116,12 +117,12 @@ strong {
 /*Pokemon types*/
 .normal {
   background-color: var(--type-normal);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .fire {
   background-color: var(--type-fire);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .water {
@@ -131,75 +132,75 @@ strong {
 
 .grass {
   background-color: var(--type-grass);
-  color: var(--cl-white);
+  color: var(--clr-white);
 }
 
 .electric {
   background-color: var(--type-electric);
-  color: var(--cl-white);
+  color: var(--clr-white);
 }
 
 .ice {
   background-color: var(--type-ice);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .fighting {
   background-color: var(--type-fighting);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .poison {
   background-color: var(--type-poison);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .ground {
   background-color: var(--type-ground);
-  color: var(--cl-white);
+  color: var(--clr-white);
 }
 
 .flying {
   background-color: var(--type-flying);
-  color: var(--cl-white);
+  color: var(--clr-white);
 }
 
 .psychic {
   background-color: var(--type-psychic);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .bug {
   background-color: var(--type-bug);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .rock {
   background-color: var(--type-rock);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .ghost {
   background-color: var(--type-ghost);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .dark {
   background-color: var(--type-dark);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .dragon {
   background-color: var(--type-dragon);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .steel {
   background-color: var(--type-steel);
-  color: var(--cl-black);
+  color: var(--clr-black);
 }
 
 .fairy {
   background-color: var(--type-fairy);
-  color: var(--cl-white);
+  color: var(--clr-white);
 }
