@@ -149,7 +149,7 @@
   .header__menu {
     display: flex;
     list-style: none;
-    padding: 0;
+    padding: 0 0.5rem;
     gap: 2rem;
   }
 
@@ -191,6 +191,10 @@
     font-size: var(--size-lg);
   }
 
+  .header__type {
+    margin-top: 1rem;
+  }
+
   .header__type-list {
     display: flex;
     align-items: center;
@@ -225,7 +229,14 @@
 }
 
 /* xL */
-/*@media (min-width:1280px){}*/
+@media (min-width: 1280px) {
+  .header__searchPokemon {
+    margin-top: 1rem;
+  }
+  .header__type {
+    margin-top: 2rem;
+  }
+}
 
 /* 2xL */
 /*@media (min-width:1536px){} */
