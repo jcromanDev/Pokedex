@@ -5,9 +5,9 @@ import type {
   PokemonGenerationResource,
 } from "./types";
 
-const URL: string = `https://pokeapi.co/api/v2`;
-const extraResults: number = 30;
-const pokemonTotal: number = 1025;
+const URL: string = import.meta.env.VITE_POKEAPI_URL;
+const extraResults: number = import.meta.env.VITE_EXTRA_RESULTS;
+const pokemonTotal: number = import.meta.env.VITE_TOTAL_POKEMON;
 
 let offset = 0;
 let selectedValue: string = "";

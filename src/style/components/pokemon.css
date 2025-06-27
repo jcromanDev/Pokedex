@@ -3,6 +3,7 @@
   grid-template-columns: 1fr;
   gap: 1rem;
   z-index: 999;
+  position: relative;
 }
 
 .pokemon__content {
@@ -86,6 +87,7 @@
   font-size: var(--size-sm);
   text-decoration: underline;
   letter-spacing: -0.05em;
+  border-radius: 100vmax;
 }
 
 .pokemon__stats-container {
@@ -110,7 +112,7 @@
 
 .pokemon__btn-more-results {
   font-size: var(--size-lg);
-  color: var(--clr-white);
+  color: var(--clr-white-btn);
   background-color: var(--type-psychic);
   padding: 1rem;
   border-radius: 10em;

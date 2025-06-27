@@ -164,7 +164,7 @@
           <img src="./Pokedex_logo.png" alt="Pokemon logo" />
         </div>
         <div class="header__searchPokemon">
-          <select id="cmbPokemon" class="header__cmbGeneration">
+          <select id="pokemonGenCmb" class="header__cmbGeneration">
             <option value="" selected>-- Choose a generation --</option>
             <option value="0">All Generations</option>
             <option value="1">1º Generation</option>
@@ -180,11 +180,15 @@
           <div class="header__search">
             <input
               type="text"
-              id="inputPokemon"
+              id="pokemonInput"
               class="header__input"
               placeholder="Type a pokemon ID/Name"
             />
-            <button class="header__btn-search" type="submit" id="btnSearch">
+            <button
+              class="header__btn-search"
+              type="submit"
+              id="pokemonSearchBtn"
+            >
               Search
             </button>
           </div>
@@ -193,8 +197,8 @@
       <div class="header__type">
         <!--  mobile filter mode  -->
         <div class="header__type-filter">
-          <button class="header__type-color">Type</button>
-          <select id="cmbPokemonType" class="header__type-cmb">
+          <button id="pokemonTypeColor" class="header__type-color">Type</button>
+          <select id="pokemonTypeCmb" class="header__type-cmb">
             <option value="" selected>-- Select a pokemon type --</option>
             <option value="normal">Normal</option>
             <option value="fire">Fire</option>
@@ -205,7 +209,6 @@
             <option value="fighting">Fighting</option>
             <option value="poison">Poison</option>
             <option value="ground">Ground</option>
-            <option value="9">Ground</option>
             <option value="flying">Flying</option>
             <option value="psychic">Psychic</option>
             <option value="bug">Bug</option>
@@ -219,67 +222,94 @@
         </div>
         <ul class="header__type-list">
           <li class="header__type-item">
-            <button class="btn header__btn" id="all">All</button>
+            <button class="btn header__btn normal pokemonType" id="normal">
+              Normal
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn normal" id="normal">Normal</button>
+            <button class="btn header__btn fire pokemonType" id="fire">
+              Fire
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn fire" id="fire">Fire</button>
+            <button class="btn header__btn water pokemonType" id="water">
+              Water
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn water" id="water">Water</button>
+            <button class="btn header__btn grass pokemonType" id="grass">
+              Grass
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn grass" id="grass">Grass</button>
-          </li>
-          <li class="header__type-item">
-            <button class="btn header__btn electric" id="electric">
+            <button class="btn header__btn electric pokemonType" id="electric">
               Electric
             </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn ice" id="ice">Ice</button>
+            <button class="btn header__btn ice pokemonType" id="ice">
+              Ice
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn fighting" id="fighting">
+            <button class="btn header__btn fighting pokemonType" id="fighting">
               Fighting
             </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn poison" id="poison">Poison</button>
+            <button class="btn header__btn poison pokemonType" id="poison">
+              Poison
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn ground" id="ground">Ground</button>
+            <button class="btn header__btn ground pokemonType" id="ground">
+              Ground
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn flying" id="flying">Flying</button>
+            <button class="btn header__btn flying pokemonType" id="flying">
+              Flying
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn psychic" id="psychic">
+            <button class="btn header__btn psychic pokemonType" id="psychic">
               Psychic
             </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn bug" id="bug">Bug</button>
+            <button class="btn header__btn bug pokemonType" id="bug">
+              Bug
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn rock" id="rock">Rock</button>
+            <button class="btn header__btn rock pokemonType" id="rock">
+              Rock
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn ghost" id="ghost">Ghost</button>
+            <button class="btn header__btn ghost pokemonType" id="ghost">
+              Ghost
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn dark" id="dark">Dark</button>
+            <button class="btn header__btn dark pokemonType" id="dark">
+              Dark
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn dragon" id="dragon">Dragon</button>
+            <button class="btn header__btn dragon pokemonType" id="dragon">
+              Dragon
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn steel" id="steel">Steel</button>
+            <button class="btn header__btn steel pokemonType" id="steel">
+              Steel
+            </button>
           </li>
           <li class="header__type-item">
-            <button class="btn header__btn fairy" id="fairy">Fairy</button>
+            <button class="btn header__btn fairy pokemonType" id="fairy">
+              Fairy
+            </button>
           </li>
         </ul>
       </div>
@@ -401,7 +431,7 @@
           </li>
           <li><button class="mobile-nav__item-line"></button></li>
           <li>
-            <button class="mobile-nav__sun">
+            <button id="theme-toggle" class="mobile-nav__sun">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -423,8 +453,8 @@
     <!-- End of Mobile Navigation-->
     <main>
       <div id="all">
-        <div class="container pokemon__container" id="pokemonList">
-          <div class="pokemon__content">
+        <div class="container pokemon__container" id="pokemonContainer">
+          <!-- <div class="pokemon__content">
             <p class="pokemon__id-background">#103</p>
             <div class="pokemon__img">
               <img src="./hitmonlee.png" alt="Pokemon image" />
@@ -443,14 +473,16 @@
                 <p class="pokemon__stat">43.7kg</p>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="pokemon__more-results">
-          <button class="pokemon__btn-more-results">More Results</button>
+          <button id="moreResultsBtn" class="pokemon__btn-more-results">
+            More Results
+          </button>
         </div>
       </div>
     </main>
-    <footer class="footer container">
+    <footer class="container">
       <h3 class="footer__title">&ltcir;--- jcromanDev ---&gtcir;</h3>
     </footer>
     <script type="module" src="/src/main.ts"></script>

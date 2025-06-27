@@ -1,11 +1,12 @@
 .header {
   display: flex;
   flex-direction: column;
+  background-color: var(--clr-light);
   padding: 0.5rem;
   width: 100%;
   box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, 0.5);
   position: relative;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .header__nav {
@@ -65,12 +66,13 @@
   place-items: center;
   font-size: var(--size-base);
   font-weight: 500;
+  background-color: var(--clr-cmb);
   color: var(--clr-black);
 }
 
 .header__cmbGeneration:hover,
 .header__type-cmb:hover {
-  background-color: var(--clr-gray);
+  background-color: var(--clr-cmb);
   box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.25);
 }
 
@@ -81,7 +83,7 @@
 .header__input {
   padding: 0.5rem;
   font-size: var(--clr-base);
-  background-color: var(--clr-white);
+  background-color: var(--clr-light);
   color: var(--clr-black);
   border: none;
   border-bottom: 1px solid #8b8b8b;
@@ -96,7 +98,7 @@
   font-size: var(--size-base);
   font-weight: 500;
   background-color: var(--type-grass);
-  color: var(--clr-white);
+  color: var(--clr-white-btn);
   padding: 0.75rem;
   border-radius: 0.5rem;
   cursor: pointer;

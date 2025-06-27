@@ -1,12 +1,16 @@
 :root {
   --clr-black: #1c1c1c;
+  --clr-white: #f7f7f7f7;
+  --clr-dark: #020617;
+  --clr-light: #f1f5f9;
   --clr-gray: #ecececec;
   --clr-dark-gray: #9c9c9c;
-  --clr-white: #f7f7f7f7;
 
+  /* Controls */
+  --clr-white-btn: #f7f7f7;
+  --clr-cmb: #f1f1f1;
   --clr-btn-back: linear-gradient(to right, #dad993, #ddc124);
   --clr-btn-transfer: linear-gradient(to right, #9eda93, #22cba8);
-  --clr-cmb: #f1f1f1;
 
   --type-normal: #a8a878;
   --type-fire: #f08030;
@@ -45,6 +49,15 @@
   --size-10xl: 10rem;
 }
 
+.dark-mode {
+  --clr-white: #1c1c1c;
+  --clr-black: #f7f7f7f7;
+  --clr-light: #020617;
+  --clr-dark: #f1f5f9;
+  --clr-gray: #9c9c9c;
+  --clr-cmb: #272933;
+}
+
 * {
   margin: 0;
   line-height: calc(1em + 0.5rem);
@@ -57,7 +70,7 @@ html {
 body {
   font-family: "General Sans", sans-serif;
   min-height: 100vh;
-  background-color: var(--clr-white);
+  background-color: var(--clr-light);
   color: var(--clr-black);
 }
 
