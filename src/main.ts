@@ -4,11 +4,8 @@ import "./style/components/header.css";
 import "./style/components/pokemon.css";
 import "./style/components/footer.css";
 import "./style/components/mobile-nav.css";
-
-import mobileNav from "./utils/mobile-nav";
-import darkMode from "./utils/dark-mode";
-
 import "./style/utils.css";
+
 import {
   GetAllPokemon,
   getPokemonGenList,
@@ -35,12 +32,17 @@ import {
   typeCmb,
 } from "./pokeapi/DOM";
 
+import mobileNav from "./utils/mobile-nav";
+import darkMode from "./utils/dark-mode";
+import { getLanguage, setLanguage } from "./utils/languages";
+
 generationCmb.value = "";
 typeCmb.value = "";
 pokemonInput.value = "";
 
 mobileNav();
 darkMode();
+setLanguage("en");
 Init();
 
 pokemonTypeBtn.forEach((button) => {
@@ -57,35 +59,39 @@ pokemonTypeBtn.forEach((button) => {
 
 typeCmb.addEventListener("change", (event: Event) => {
   const type = (event.target as HTMLSelectElement).value;
-  pokemonContainer.innerHTML = ``;
-  pokemonInput.value = "";
-  setIsTypeSearch(true);
-  ChangePokemonTypeColorButton(type);
+  if (type !== "") {
+    pokemonContainer.innerHTML = ``;
+    pokemonInput.value = "";
+    setIsTypeSearch(true);
+    ChangePokemonTypeColorButton(type);
 
-  if (getSelectedValue() === "0") GetPokemonTypes(type);
-  else if (type === "") Init();
-  else GetPokemonGenType(type);
+    if (getSelectedValue() === "0") GetPokemonTypes(type);
+    // else if (type === "") Init();
+    else GetPokemonGenType(type);
+  }
 });
 
 generationCmb.addEventListener("change", (event: Event) => {
-  const value = (event.target as HTMLSelectElement).value;
-  setSelectedValue(value);
-  setIsTypeSearch(false);
-  ChangePokemonTypeColorButton("");
-  pokemonInput.value = "";
-  typeCmb.value = "";
-  pokemonContainer.innerHTML = ``;
-
-  if (getSelectedValue() === "") Init();
-  else if (getSelectedValue() === "0") GetAllPokemon();
-  else GetPokemonGen(parseInt(getSelectedValue()));
+  const generation = (event.target as HTMLSelectElement).value;
+  if (generation !== "") {
+    setSelectedValue(generation);
+    setIsTypeSearch(false);
+    ChangePokemonTypeColorButton("");
+    pokemonInput.value = "";
+    typeCmb.value = "";
+    pokemonContainer.innerHTML = ``;
+    if (getSelectedValue() === "0") GetAllPokemon();
+    else GetPokemonGen(parseInt(getSelectedValue()));
+  }
 });
 
 moreResultsBtn.addEventListener("click", () => {
+  let lang = getLanguage();
   if (getSelectedValue() === "0") {
     if (getIsTypeSearch()) LoadResults(getGetPokemonTypeList(), false);
     else LoadResults(getPokemonGenList(), true);
   } else LoadResults(getPokemonGenList(), false);
+  if (lang) setLanguage(lang);
 });
 
 pokemonInput.addEventListener("keyup", (event: KeyboardEvent) => {

@@ -1,0 +1,44 @@
+{
+  "header": {
+    "inputPlaceholder": "Escribe un nombre o Id",
+    "buttonSearch": "Buscar",
+    "buttonType": "Tipo"
+  },
+  "pokemon": {
+    "moreResults": "Más Resultados"
+  },
+  "generation": {
+    "default": "--- Selecciona una generación ---",
+    "all": "Todas las generaciones",
+    "first": "Primera generación",
+    "second": "Segunda generación",
+    "third": "Tercera generación",
+    "fourth": "Cuarta generación",
+    "fifth": "Quinta generación",
+    "sixth": "Sexta generación",
+    "seventh": "Septima generación",
+    "eighth": "Octava generación",
+    "ninth": "Novena generación"
+  },
+  "types": {
+    "default": "--- Selecciona un tipo ---",
+    "normal": "Normal",
+    "fire": "Fuego",
+    "water": "Agua",
+    "grass": "Hierba",
+    "electric": "Electrico",
+    "ice": "Hielo",
+    "fighting": "Peleador",
+    "poison": "Veneno",
+    "ground": "Tierra",
+    "flying": "Volador",
+    "psychic": "Psiquico",
+    "bug": "Insecto",
+    "rock": "Roca",
+    "ghost": "Fantasma",
+    "dark": "Siniestro",
+    "dragon": "Dragón",
+    "steel": "Acero",
+    "fairy": "Hada"
+  }
+}

@@ -24,7 +24,8 @@ export const searchBtn = document.getElementById(
 export function ShowPokemon(data: Pokemon): void {
   const types = data.types
     .map(
-      (type) => `<p class="pokemon__type ${type.type.name}">${type.type.name}`
+      (type) => `<p class="pokemon__type ${type.type.name}"
+      data-section="types" data-value="${type.type.name}">${type.type.name}`
     )
     .join("");
 
@@ -48,7 +49,7 @@ export function ShowPokemon(data: Pokemon): void {
                 <h2 class="pokemon__name">${data.name}</h2>
             </div>
             <div class="pokemon__types">
-                ${types}"
+                ${types}
             </div>
             <div class="pokemon__stats-container">
                 <p class="pokemon__stat">${data.height / 10}m</p>

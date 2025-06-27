@@ -85,7 +85,6 @@
   padding: 0.25rem 0.5rem;
   gap: 0.5rem;
   font-size: var(--size-sm);
-  text-decoration: underline;
   letter-spacing: -0.05em;
   border-radius: 100vmax;
 }
