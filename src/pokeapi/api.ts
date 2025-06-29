@@ -1,3 +1,4 @@
+import { getLanguage, setLanguage } from "../utils/languages";
 import { pokemonContainer, showMoreResultsButton, ShowPokemon } from "./DOM";
 import type {
   Pokemon,
@@ -85,6 +86,7 @@ export async function FindPokemon(inputData: string): Promise<void> {
 }
 
 export async function LoadResults(list: Pokemon[], showAllPokemon: boolean) {
+  let lang = getLanguage();
   if (showAllPokemon) {
     list = await GetPokemonList(offset);
     list.forEach(ShowPokemon);
@@ -97,6 +99,7 @@ export async function LoadResults(list: Pokemon[], showAllPokemon: boolean) {
     ? offset >= pokemonTotal
     : offset >= list.length || list.length <= extraResults;
   showMoreResultsButton(limitReached);
+  if (lang) setLanguage(lang);
 }
 
 export function setSelectedValue(value: string) {

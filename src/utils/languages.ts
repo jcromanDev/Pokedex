@@ -34,8 +34,14 @@ langBtns.forEach((btn) => {
   });
 });
 
-export function setLanguage(lang: string) {
-  applyLanguage(lang);
+export function setLanguage(lang: string | null) {
+  if (lang) {
+    localStorage.setItem("lang", lang);
+    applyLanguage(lang);
+  } else {
+    localStorage.setItem("lang", "en");
+    applyLanguage("en");
+  }
 }
 
 export function getLanguage() {

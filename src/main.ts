@@ -42,7 +42,7 @@ pokemonInput.value = "";
 
 mobileNav();
 darkMode();
-setLanguage("en");
+setLanguage(getLanguage());
 Init();
 
 pokemonTypeBtn.forEach((button) => {
@@ -86,12 +86,10 @@ generationCmb.addEventListener("change", (event: Event) => {
 });
 
 moreResultsBtn.addEventListener("click", () => {
-  let lang = getLanguage();
   if (getSelectedValue() === "0") {
     if (getIsTypeSearch()) LoadResults(getGetPokemonTypeList(), false);
     else LoadResults(getPokemonGenList(), true);
   } else LoadResults(getPokemonGenList(), false);
-  if (lang) setLanguage(lang);
 });
 
 pokemonInput.addEventListener("keyup", (event: KeyboardEvent) => {
