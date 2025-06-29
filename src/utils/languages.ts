@@ -30,6 +30,7 @@ const applyLanguage = (lang: string) => {
 langBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     const lang = btn.dataset.language as string;
+    localStorage.setItem("lang", lang);
     if (lang) applyLanguage(lang);
   });
 });
