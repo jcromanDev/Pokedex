@@ -14,6 +14,13 @@
   </head>
   <body>
     <header class="container header">
+      <div id="pokemonInfoBtnBack" class="header__pokemonInfo__btnBack">
+        <button
+          type="button"
+          data-section="body"
+          data-value="buttonBack"
+        ></button>
+      </div>
       <nav class="header__nav">
         <ul class="header__menu">
           <li>
@@ -241,6 +248,30 @@
           </div>
         </div>
       </div>
+      <!-- Pokemon info header -->
+      <div class="header__pokemonInfo__controls">
+        <div class="header__pokemonInfo__logo">
+          <img src="./Pokedex_logo.png" alt="Pokemon logo" />
+        </div>
+        <div class="header__pokemonInfo__search">
+          <input
+            type="text"
+            id="pokemonInfoInput"
+            class="header__pokemonInfo__input"
+            data-section="header"
+            data-value="inputPlaceholder"
+            placeholder="Type a pokemon ID/Name"
+          />
+          <button
+            class="header__pokemonInfo__btn-search"
+            type="submit"
+            id="pokemonInfoSearchBtn"
+            data-section="header"
+            data-value="buttonSearch"
+          ></button>
+        </div>
+      </div>
+      <!-- End Pokemon info header -->
       <div class="header__type">
         <!--  mobile filter mode  -->
         <div class="header__type-filter">
@@ -657,6 +688,89 @@
             data-section="pokemon"
             data-value="moreResults"
           ></button>
+        </div>
+      </div>
+      <div class="pokemonInfo__container" id="pokemonInfoContainer">
+        <div class="pokemonInfo__img">
+          <div class="pokemonInfo__wrapper">
+            <img src="/hitmonlee.png" alt="Pokemon image" />
+          </div>
+        </div>
+        <div class="pokemonInfo__data">
+          <div class="pokemonInfo__mainAttributes">
+            <h3 class="pokemonInfo__id" id="pokemonInfoId">#106</h3>
+            <h3 class="pokemonInfo__name" id="pokemonInfoName">Hitmonlee</h3>
+          </div>
+          <hr class="pokemonInfo__separator" />
+          <div class="pokemonInfo__stats">
+            <span class="pokemonInfo__stat" id="pokemonInfoHP">102/253HP</span>
+            <span class="pokemonInfo__stat no-border" id="pokemonInfoXP"
+              >452XP</span
+            >
+          </div>
+          <button class="pokemonInfo__btn-transfer" id="pokemonInfoBtnTransfer">
+            Transfer
+          </button>
+          <div class="pokemonInfo__attributes-container">
+            <div class="pokemonInfo__attributes-content">
+              <div
+                class="pokemonInfo__type-container"
+                id="pokemonInfoTypesContainer"
+              >
+                <div class="pokemonInfo__type fighting">Fighting</div>
+                <div class="pokemonInfo__type electric">Electric</div>
+              </div>
+              <small class="pokemonInfo__subtitle">Type</small>
+            </div>
+            <div class="pokemonInfo__attributes-content">
+              <p
+                class="pokemonInfo__attribute-stat no-border"
+                id="pokemonInfoWeight"
+              >
+                43.7kg
+              </p>
+              <small class="pokemonInfo__subtitle">Weight</small>
+            </div>
+            <div class="pokemonInfo__attributes-content">
+              <p class="pokemonInfo__attribute-stat" id="height">1.5m</p>
+              <small class="pokemonInfo__subtitle">Height</small>
+            </div>
+          </div>
+          <div class="pokemonInfo__moves-container">
+            <h4 class="pokemonInfo__moves-title">Moves</h4>
+            <div
+              class="pokemonInfo__moves-content"
+              id="pokemonInfoMovesContent"
+            >
+              <button class="btn pokemonInfo__moves-type normal">dash</button>
+              <button class="btn pokemonInfo__moves-type water">
+                Hydro pump
+              </button>
+              <button class="btn pokemonInfo__moves-type fighting">
+                Super kick
+              </button>
+            </div>
+            <div
+              class="pokemonInfo__moves-description-container"
+              id="pokemonInfoDescription"
+            >
+              <button
+                class="pokemonInfo__btn-close"
+                id="pokemonInfoBtnCloseDescription"
+              >
+                X
+              </button>
+              <h4 class="pokemonInfo__moves-name fighting" id="moveName">
+                Double kick
+              </h4>
+              <p class="pokemonInfo__moves-description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Perferendis dolorum commodi praesentium veritatis distinctio
+                quia voluptas maxime alias obcaecati! Voluptate, harum.
+                Repellendus magni sed nostrum amet cum ipsa impedit laborum?
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </main>

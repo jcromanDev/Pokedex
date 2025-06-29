@@ -1,4 +1,5 @@
 import type { Pokemon } from "./types";
+import { showPokemonInfo } from "../utils/router";
 
 export const pokemonContainer = document.getElementById(
   "pokemonContainer"
@@ -21,6 +22,19 @@ export const searchBtn = document.getElementById(
   "pokemonSearchBtn"
 ) as HTMLButtonElement;
 
+export const pokemonInfoInput = document.getElementById(
+  "pokemonInfoInput"
+) as HTMLInputElement;
+export const searchInfoBtn = document.getElementById(
+  "pokemonInfoSearchBtn"
+) as HTMLButtonElement;
+export const btnBack = document.getElementById(
+  "pokemonInfoBtnBack"
+) as HTMLButtonElement;
+export const pokemonInfo = document.getElementById(
+  "pokemonInfoContainer"
+) as HTMLElement;
+
 export function ShowPokemon(data: Pokemon): void {
   const types = data.types
     .map(
@@ -32,31 +46,31 @@ export function ShowPokemon(data: Pokemon): void {
   const div = document.createElement("div");
   div.classList.add("pokemon__content");
   div.innerHTML = `
-    <a hred= "#">
-        <p class="pokemon__id-background">${data.id
-          .toString()
-          .padStart(3, "0")}</p>
-        <div class="pokemon__img">
-            <img src="${
-              data.sprites.other["official-artwork"].front_default
-            }" alt="${data.name} image">
-        </div>
-        <div class="pokemon__info">
-            <div class="pokemon__name-container">
-                <p class="pokemon__id">#${data.id
-                  .toString()
-                  .padStart(3, "0")}</p>
-                <h2 class="pokemon__name">${data.name}</h2>
-            </div>
-            <div class="pokemon__types">
-                ${types}
-            </div>
-            <div class="pokemon__stats-container">
-                <p class="pokemon__stat">${data.height / 10}m</p>
-                <p class="pokemon__stat">${data.weight / 10}kg</p>
-            </div>
-        </div>
-    </a>`;
+      <p class="pokemon__id-background">${data.id
+        .toString()
+        .padStart(3, "0")}</p>
+      <div class="pokemon__img">
+          <img src="${
+            data.sprites.other["official-artwork"].front_default
+          }" alt="${data.name} image">
+      </div>
+      <div class="pokemon__info">
+          <div class="pokemon__name-container">
+              <p class="pokemon__id">#${data.id.toString().padStart(3, "0")}</p>
+              <h2 class="pokemon__name">${data.name}</h2>
+          </div>
+          <div class="pokemon__types">
+              ${types}
+          </div>
+          <div class="pokemon__stats-container">
+              <p class="pokemon__stat">${data.height / 10}m</p>
+              <p class="pokemon__stat">${data.weight / 10}kg</p>
+          </div>
+      </div>
+    `;
+  div.addEventListener("click", () => {
+    showPokemonInfo(true);
+  });
   pokemonContainer.appendChild(div);
 }
 

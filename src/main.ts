@@ -1,9 +1,13 @@
 import "./style/modern-normalize.css";
 import "./style/style.css";
-import "./style/components/header.css";
-import "./style/components/pokemon.css";
-import "./style/components/footer.css";
-import "./style/components/mobile-nav.css";
+import "./style/index_components/header.css";
+import "./style/index_components/pokemon.css";
+import "./style/index_components/footer.css";
+import "./style/index_components/mobile-nav.css";
+
+import "./style/pokemonInfo_components/header__pokemonInfo__controls.css";
+import "./style/pokemonInfo_components/pokemonInfo.css";
+
 import "./style/utils.css";
 
 import {
@@ -22,19 +26,23 @@ import {
   Init,
 } from "./pokeapi/api";
 import {
+  btnBack,
   ChangePokemonTypeColorButton,
   generationCmb,
   moreResultsBtn,
   pokemonContainer,
+  pokemonInfoInput,
   pokemonInput,
   pokemonTypeBtn,
   searchBtn,
+  searchInfoBtn,
   typeCmb,
 } from "./pokeapi/DOM";
 
 import mobileNav from "./utils/mobile-nav";
 import darkMode from "./utils/dark-mode";
 import { getLanguage, setLanguage } from "./utils/languages";
+import { showPokemonInfo } from "./utils/router";
 
 generationCmb.value = "";
 typeCmb.value = "";
@@ -44,6 +52,7 @@ mobileNav();
 darkMode();
 setLanguage(getLanguage());
 Init();
+showPokemonInfo(true);
 
 pokemonTypeBtn.forEach((button) => {
   button.addEventListener("click", (event: Event) => {
@@ -104,4 +113,22 @@ searchBtn.addEventListener("click", () => {
   const inputData = pokemonInput.value;
   if (inputData != "") FindPokemon(inputData);
   else Init();
+});
+
+pokemonInfoInput.addEventListener("keyup", (event: KeyboardEvent) => {
+  const inputData = pokemonInfoInput.value;
+  if (event.key === "Enter") {
+    if (inputData != "") FindPokemon(inputData);
+    else Init();
+  }
+});
+
+searchInfoBtn.addEventListener("click", () => {
+  const inputData = pokemonInfoInput.value;
+  if (inputData != "") FindPokemon(inputData);
+  else Init();
+});
+
+btnBack.addEventListener("click", () => {
+  showPokemonInfo(false);
 });

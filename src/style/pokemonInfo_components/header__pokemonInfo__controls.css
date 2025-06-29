@@ -1,0 +1,125 @@
+.header__pokemonInfo__btnBack {
+  display: none;
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  z-index: 9999;
+}
+
+.header__pokemonInfo__btnBack button {
+  font-size: var(--size-xs);
+  font-weight: 600;
+  background: var(--clr-btn-back);
+  color: var(--clr-white);
+  padding: 1rem 1.5rem;
+  border-radius: 100vmax;
+  text-transform: uppercase;
+}
+
+.header__pokemonInfo__btnBack button:hover {
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+}
+
+.header__pokemonInfo__controls {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  place-items: center;
+  margin-top: 0px;
+}
+
+.header__pokemonInfo__logo {
+  padding: 1rem;
+}
+
+.header__pokemonInfo__search {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  padding: 0.5rem;
+  justify-items: center;
+}
+
+.header__pokemonInfo__input {
+  padding: 0.5rem;
+  font-size: var(--clr-base);
+  background-color: var(--clr-light);
+  color: var(--clr-black);
+  border: none;
+  border-bottom: 1px solid #8b8b8b;
+  outline: none;
+}
+
+.header__pokemonInfo__input:focus::placeholder {
+  color: transparent;
+}
+
+.header__pokemonInfo__btn-search {
+  font-size: var(--size-base);
+  font-weight: 500;
+  background-color: var(--type-grass);
+  color: var(--clr-white-btn);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.header__pokemonInfo__btn-search:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.25);
+}
+
+/* xs */
+/*@media (min-width:475px){}*/
+
+/* sm */
+@media (min-width: 640px) {
+  .header__pokemonInfo__btnBack button {
+    font-size: var(--size-sm);
+    padding: 1rem 1.5rem;
+  }
+
+  .header__pokemonInfo__controls {
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+/* md */
+@media (min-width: 768px) {
+  .header__pokemonInfo__btnBack button {
+    font-size: var(--size-base);
+  }
+}
+
+/* Lg */
+@media (min-width: 1024px) {
+  .header__pokemonInfo__btnBack button {
+    font-size: var(--size-lg);
+    padding: 1rem 2rem;
+  }
+
+  .header__pokemonInfo__controls {
+    justify-content: center;
+    gap: 3rem;
+  }
+}
+
+/* xL */
+@media (min-width: 1280px) {
+  .header__pokemonInfo__btnBack button {
+    font-size: var(--size-xl);
+    padding: 1rem 3rem;
+  }
+
+  .heder__pokemonInfo__controls {
+    gap: 7rem;
+  }
+}
+
+/* 2xL */
+/*@media (min-width:1536px){} */

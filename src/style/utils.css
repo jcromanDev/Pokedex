@@ -28,6 +28,10 @@
   margin-top: 5rem;
 }
 
+.no-border {
+  border: none;
+}
+
 /* xs */
 @media (min-width: 475px) {
   .container {

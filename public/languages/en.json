@@ -1,4 +1,7 @@
 {
+  "body": {
+    "buttonBack": "Go back"
+  },
   "header": {
     "inputPlaceholder": "Type a pokemon ID/Name",
     "buttonSearch": "Search",

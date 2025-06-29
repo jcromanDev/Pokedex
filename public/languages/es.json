@@ -1,4 +1,7 @@
 {
+  "body": {
+    "buttonBack": "Regresar"
+  },
   "header": {
     "inputPlaceholder": "Escribe un nombre o Id",
     "buttonSearch": "Buscar",
