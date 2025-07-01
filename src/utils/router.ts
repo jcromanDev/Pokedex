@@ -10,17 +10,17 @@ const headerBtnBack = document.getElementById(
 ) as HTMLButtonElement;
 const pokemonAll = document.getElementById("all") as HTMLElement;
 const pokemonInfoContainer = document.getElementById(
-  "pokemonInfoContainer"
+  "pokemonInfo"
 ) as HTMLElement;
 
-export const showPokemonInfo = (show: boolean) => {
+export const ShowSelectedPokemonInfo = (show: boolean) => {
   if (show) {
     headerControls.style.display = "none";
     headerType.style.display = "none";
     pokemonAll.style.display = "none";
 
     headerPokemonInfo.style.display = "flex";
-    pokemonInfoContainer.style.display = "flex";
+    pokemonInfoContainer.style.display = "block";
     headerBtnBack.style.display = "block";
   } else {
     headerControls.style.display = "flex";

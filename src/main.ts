@@ -23,6 +23,7 @@ import {
   setSelectedValue,
   GetPokemonGenType,
   FindPokemon,
+  FindPokemonInfo,
   Init,
 } from "./pokeapi/api";
 import {
@@ -42,17 +43,28 @@ import {
 import mobileNav from "./utils/mobile-nav";
 import darkMode from "./utils/dark-mode";
 import { getLanguage, setLanguage } from "./utils/languages";
-import { showPokemonInfo } from "./utils/router";
+import { ShowSelectedPokemonInfo } from "./utils/router";
 
 generationCmb.value = "";
 typeCmb.value = "";
 pokemonInput.value = "";
+pokemonInfoInput.value = "";
 
 mobileNav();
 darkMode();
 setLanguage(getLanguage());
+ShowSelectedPokemonInfo(false);
 Init();
-showPokemonInfo(true);
+
+pokemonContainer.addEventListener("click", (event: MouseEvent) => {
+  const target = event.target as HTMLElement;
+  const pokemonContent = target.closest(".pokemon__content") as HTMLElement;
+
+  if (pokemonContent) {
+    const id: string = pokemonContent.id!;
+    FindPokemonInfo(id);
+  }
+});
 
 pokemonTypeBtn.forEach((button) => {
   button.addEventListener("click", (event: Event) => {
@@ -118,17 +130,18 @@ searchBtn.addEventListener("click", () => {
 pokemonInfoInput.addEventListener("keyup", (event: KeyboardEvent) => {
   const inputData = pokemonInfoInput.value;
   if (event.key === "Enter") {
-    if (inputData != "") FindPokemon(inputData);
+    if (inputData != "") FindPokemonInfo(inputData);
     else Init();
   }
 });
 
 searchInfoBtn.addEventListener("click", () => {
   const inputData = pokemonInfoInput.value;
-  if (inputData != "") FindPokemon(inputData);
+  if (inputData != "") FindPokemonInfo(inputData);
   else Init();
 });
 
 btnBack.addEventListener("click", () => {
-  showPokemonInfo(false);
+  pokemonInfoInput.value = "";
+  ShowSelectedPokemonInfo(false);
 });

@@ -1,5 +1,5 @@
-import type { Pokemon } from "./types";
-import { showPokemonInfo } from "../utils/router";
+import type { Pokemon, PokemonInfo, PokemonMove } from "./types";
+import { ShowSelectedPokemonInfo } from "../utils/router";
 
 export const pokemonContainer = document.getElementById(
   "pokemonContainer"
@@ -21,7 +21,6 @@ export const pokemonInput = document.getElementById(
 export const searchBtn = document.getElementById(
   "pokemonSearchBtn"
 ) as HTMLButtonElement;
-
 export const pokemonInfoInput = document.getElementById(
   "pokemonInfoInput"
 ) as HTMLInputElement;
@@ -31,9 +30,60 @@ export const searchInfoBtn = document.getElementById(
 export const btnBack = document.getElementById(
   "pokemonInfoBtnBack"
 ) as HTMLButtonElement;
-export const pokemonInfo = document.getElementById(
+export const pokemonInfoContainer = document.getElementById(
   "pokemonInfoContainer"
 ) as HTMLElement;
+export const pokemonInfoImg = document.getElementById(
+  "pokemonInfoImg"
+) as HTMLImageElement;
+export const pokemonInfoId = document.getElementById(
+  "pokemonInfoId"
+) as HTMLElement;
+export const pokemonInfoName = document.getElementById(
+  "pokemonInfoName"
+) as HTMLElement;
+export const pokemonInfoHP = document.getElementById(
+  "pokemonInfoHP"
+) as HTMLElement;
+export const pokemonInfoXP = document.getElementById(
+  "pokemonInfoXP"
+) as HTMLElement;
+export const pokemonInfoBtnTransfer = document.getElementById(
+  "pokemonInfoBtnTransfer"
+) as HTMLButtonElement;
+export const pokemonInfoTypesContainer = document.getElementById(
+  "pokemonInfoTypesContainer"
+) as HTMLElement;
+export const pokemonInfoWeight = document.getElementById(
+  "pokemonInfoWeight"
+) as HTMLElement;
+export const pokemonInfoHeight = document.getElementById(
+  "pokemonInfoHeight"
+) as HTMLElement;
+export const pokemonInfoMovesContent = document.getElementById(
+  "pokemonInfoMovesContent"
+) as HTMLElement;
+export const pokemonInfoDescription = document.getElementById(
+  "pokemonInfoDescription"
+) as HTMLElement;
+export const pokemonInfoBtnCloseDescription = document.getElementById(
+  "pokemonInfoBtnCloseDescription"
+) as HTMLElement;
+export const pokemonInfoMovesName = document.getElementById(
+  "pokemonInfoMoveName"
+) as HTMLElement;
+export const pokemonInfoMovesNameType = document.getElementById(
+  "pokemonInfoMovesNameType"
+) as HTMLElement;
+export const pokemonInfoMovesDescription = document.getElementById(
+  "pokemonInfoMovesDescription"
+) as HTMLElement;
+export const pokemonInfoDescriptionDesktop = document.getElementById(
+  "pokemonInfoDescriptionDesktop"
+) as HTMLElement;
+export const pokemonInfoMovesNameTypeColor = document.getElementById(
+  "pokemonInfoMovesNameTypeColor"
+) as HTMLSpanElement;
 
 export function ShowPokemon(data: Pokemon): void {
   const types = data.types
@@ -44,6 +94,7 @@ export function ShowPokemon(data: Pokemon): void {
     .join("");
 
   const div = document.createElement("div");
+  div.id = `${data.id}`;
   div.classList.add("pokemon__content");
   div.innerHTML = `
       <p class="pokemon__id-background">${data.id
@@ -68,10 +119,51 @@ export function ShowPokemon(data: Pokemon): void {
           </div>
       </div>
     `;
-  div.addEventListener("click", () => {
-    showPokemonInfo(true);
-  });
   pokemonContainer.appendChild(div);
+}
+
+export function ShowPokemonInfo(data: PokemonInfo, moves: PokemonMove[]): void {
+  const types = data.types
+    .map(
+      (type) => `
+      <div class="pokemonInfo__type ${type.type.name}"
+      data-section="types" data-value="${type.type.name}">
+        ${type.type.name}
+      </div>
+    `
+    )
+    .join("");
+  const pokemonMoves = moves
+    .map(
+      (moveData) =>
+        `
+      <button class="btn pokemonInfo__moves-type ${moveData.type.name}"
+      id="${moveData.id}" data-section="types" data-value="${moveData.type.name}">
+        ${moveData.name}
+      </button>
+  `
+    )
+    .join("");
+  //add pokemon data to HTML elements
+
+  pokemonInfoImg.src =
+    data.sprites.other["official-artwork"].front_default?.toString()!;
+  pokemonInfoId.textContent = data.id.toString().padStart(3, "0");
+  pokemonInfoName.textContent = data.name.toString().toUpperCase();
+  pokemonInfoHP.innerHTML = `HP ${Math.floor(
+    Math.random() * data.stats[0].base_stat + 1
+  )} <strong>/</strong> ${data.stats[0].base_stat}`;
+  pokemonInfoXP.textContent = `XP ${
+    Math.floor(Math.random() * data.base_experience) + 1
+  }/${data.base_experience}`;
+  pokemonInfoWeight.textContent = `${data.weight / 10}kg`;
+  pokemonInfoHeight.textContent = `${data.height / 10}m`;
+  pokemonInfoTypesContainer.innerHTML = ``;
+  pokemonInfoTypesContainer.innerHTML = types;
+  pokemonInfoMovesContent.innerHTML = ``;
+  pokemonInfoMovesContent.innerHTML = pokemonMoves;
+
+  ShowSelectedPokemonInfo(true);
 }
 
 export function ChangePokemonTypeColorButton(type: string): void {
@@ -166,4 +258,8 @@ export function ChangePokemonTypeColorButton(type: string): void {
 export function showMoreResultsButton(hidden: boolean) {
   if (hidden) moreResultsBtn.style.display = "none";
   else moreResultsBtn.style.display = "block";
+}
+
+export function randomIntFromInterval(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }

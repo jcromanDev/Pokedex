@@ -690,91 +690,146 @@
           ></button>
         </div>
       </div>
-      <div class="pokemonInfo__container" id="pokemonInfoContainer">
-        <div class="pokemonInfo__img">
-          <div class="pokemonInfo__wrapper">
-            <img src="/hitmonlee.png" alt="Pokemon image" />
+      <div id="pokemonInfo" class="pokemonInfo">
+        <div class="pokemonInfo__container" id="pokemonInfoContainer">
+          <div class="pokemonInfo__img">
+            <div class="pokemonInfo__wrapper">
+              <img id="pokemonInfoImg" src="" alt="Pokemon image" />
+            </div>
+          </div>
+          <div class="pokemonInfo__data">
+            <div class="pokemonInfo__mainAttributes">
+              <h3 class="pokemonInfo__id" id="pokemonInfoId"></h3>
+              <h3 class="pokemonInfo__name" id="pokemonInfoName"></h3>
+            </div>
+            <hr class="pokemonInfo__separator" />
+            <div class="pokemonInfo__stats">
+              <span class="pokemonInfo__stat" id="pokemonInfoHP"></span>
+              <span
+                class="pokemonInfo__stat no-border"
+                id="pokemonInfoXP"
+              ></span>
+            </div>
+            <button
+              class="pokemonInfo__btn-transfer"
+              id="pokemonInfoBtnTransfer"
+            >
+              Transfer
+            </button>
+            <div class="pokemonInfo__attributes-container">
+              <div class="pokemonInfo__attributes-content">
+                <div
+                  class="pokemonInfo__type-container"
+                  id="pokemonInfoTypesContainer"
+                >
+                  <!-- <div class="pokemonInfo__type fighting">Fighting</div>
+                  <div class="pokemonInfo__type electric">Electric</div> -->
+                </div>
+                <small class="pokemonInfo__subtitle">Type</small>
+              </div>
+              <hr class="pokemonInfo__attributes-separator" />
+              <div class="pokemonInfo__attributes-content">
+                <p
+                  class="pokemonInfo__attribute-stat no-border"
+                  id="pokemonInfoWeight"
+                >
+                  43.7kg
+                </p>
+                <small class="pokemonInfo__subtitle">Weight</small>
+              </div>
+              <hr class="pokemonInfo__attributes-separator" />
+              <div class="pokemonInfo__attributes-content">
+                <p class="pokemonInfo__attribute-stat" id="pokemonInfoHeight">
+                  1.5m
+                </p>
+                <small class="pokemonInfo__subtitle">Height</small>
+              </div>
+            </div>
+            <div class="pokemonInfo__moves-container">
+              <h4 class="pokemonInfo__moves-title">Moves</h4>
+              <div
+                class="pokemonInfo__moves-content"
+                id="pokemonInfoMovesContent"
+              >
+                <!-- <button class="btn pokemonInfo__moves-type normal">dash</button>
+                <button class="btn pokemonInfo__moves-type water">
+                  Hydro pump
+                </button>
+                <button class="btn pokemonInfo__moves-type fighting">
+                  Super kick
+                </button> -->
+              </div>
+              <div
+                class="pokemonInfo__moves-description-container"
+                id="pokemonInfoDescription"
+              >
+                <button
+                  class="pokemonInfo__btn-close"
+                  id="pokemonInfoBtnCloseDescription"
+                >
+                  X
+                </button>
+                <h4
+                  class="pokemonInfo__moves-name fighting"
+                  id="pokemonInfoMoveName"
+                >
+                  Double kick
+                  <span
+                    id="pokemonInfoMovesNameType"
+                    class="pokemonInfo__moves-name-type"
+                    >(Fighting)</span
+                  >
+                </h4>
+                <p
+                  id="pokemonInfoMovesDescription"
+                  class="pokemonInfo__moves-description"
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Perferendis dolorum commodi praesentium veritatis distinctio
+                  quia voluptas maxime alias obcaecati! Voluptate, harum.
+                  Repellendus magni sed nostrum amet cum ipsa impedit laborum?
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="pokemonInfo__data">
-          <div class="pokemonInfo__mainAttributes">
-            <h3 class="pokemonInfo__id" id="pokemonInfoId">#106</h3>
-            <h3 class="pokemonInfo__name" id="pokemonInfoName">Hitmonlee</h3>
-          </div>
-          <hr class="pokemonInfo__separator" />
-          <div class="pokemonInfo__stats">
-            <span class="pokemonInfo__stat" id="pokemonInfoHP">102/253HP</span>
-            <span class="pokemonInfo__stat no-border" id="pokemonInfoXP"
-              >452XP</span
-            >
-          </div>
-          <button class="pokemonInfo__btn-transfer" id="pokemonInfoBtnTransfer">
-            Transfer
+        <div
+          class="pokemonInfo__moves-description-container-desktop"
+          id="pokemonInfoDescriptionDesktop"
+        >
+          <button
+            class="pokemonInfo__btn-close"
+            id="pokemonInfoBtnCloseDescription"
+          >
+            X
           </button>
-          <div class="pokemonInfo__attributes-container">
-            <div class="pokemonInfo__attributes-content">
-              <div
-                class="pokemonInfo__type-container"
-                id="pokemonInfoTypesContainer"
-              >
-                <div class="pokemonInfo__type fighting">Fighting</div>
-                <div class="pokemonInfo__type electric">Electric</div>
-              </div>
-              <small class="pokemonInfo__subtitle">Type</small>
-            </div>
-            <div class="pokemonInfo__attributes-content">
-              <p
-                class="pokemonInfo__attribute-stat no-border"
-                id="pokemonInfoWeight"
-              >
-                43.7kg
-              </p>
-              <small class="pokemonInfo__subtitle">Weight</small>
-            </div>
-            <div class="pokemonInfo__attributes-content">
-              <p class="pokemonInfo__attribute-stat" id="height">1.5m</p>
-              <small class="pokemonInfo__subtitle">Height</small>
-            </div>
-          </div>
-          <div class="pokemonInfo__moves-container">
-            <h4 class="pokemonInfo__moves-title">Moves</h4>
-            <div
-              class="pokemonInfo__moves-content"
-              id="pokemonInfoMovesContent"
+          <h2 class="pokemonInfo__moves-name-header">Move name:</h2>
+          <h4 class="pokemonInfo__moves-name" id="pokemonInfoMoveName">
+            Double kick
+            <span
+              id="pokemonInfoMovesNameType"
+              class="pokemonInfo__moves-name-type"
+              >(Fighting)</span
             >
-              <button class="btn pokemonInfo__moves-type normal">dash</button>
-              <button class="btn pokemonInfo__moves-type water">
-                Hydro pump
-              </button>
-              <button class="btn pokemonInfo__moves-type fighting">
-                Super kick
-              </button>
-            </div>
-            <div
-              class="pokemonInfo__moves-description-container"
-              id="pokemonInfoDescription"
-            >
-              <button
-                class="pokemonInfo__btn-close"
-                id="pokemonInfoBtnCloseDescription"
-              >
-                X
-              </button>
-              <h4 class="pokemonInfo__moves-name fighting" id="moveName">
-                Double kick
-              </h4>
-              <p class="pokemonInfo__moves-description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Perferendis dolorum commodi praesentium veritatis distinctio
-                quia voluptas maxime alias obcaecati! Voluptate, harum.
-                Repellendus magni sed nostrum amet cum ipsa impedit laborum?
-              </p>
-            </div>
-          </div>
+            <span
+              id="pokemonInfoMovesNameTypeColor"
+              class="pokemonInfo__moves-name-type-color fighting"
+            ></span>
+          </h4>
+          <h6 class="pokemonInfo__moves-description-header">Description:</h6>
+          <p
+            id="pokemonInfoMovesDescription"
+            class="pokemonInfo__moves-description"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+            dolorum commodi praesentium veritatis distinctio quia voluptas
+            maxime alias obcaecati! Voluptate, harum. Repellendus magni sed
+            nostrum amet cum ipsa impedit laborum?
+          </p>
         </div>
       </div>
     </main>
-    <footer class="container">
+    <footer class="container footer">
       <h3 class="footer__title">&ltcir;--- jcromanDev ---&gtcir;</h3>
     </footer>
     <script type="module" src="/src/main.ts"></script>

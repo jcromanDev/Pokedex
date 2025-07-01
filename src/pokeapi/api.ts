@@ -1,9 +1,18 @@
 import { getLanguage, setLanguage } from "../utils/languages";
-import { pokemonContainer, showMoreResultsButton, ShowPokemon } from "./DOM";
+import {
+  pokemonContainer,
+  pokemonInfoContainer,
+  showMoreResultsButton,
+  ShowPokemon,
+  ShowPokemonInfo,
+  randomIntFromInterval,
+} from "./DOM";
 import type {
   Pokemon,
+  PokemonInfo,
   PokemonAPIResource,
   PokemonGenerationResource,
+  PokemonMove,
 } from "./types";
 
 const URL: string = import.meta.env.VITE_POKEAPI_URL;
@@ -11,7 +20,7 @@ const extraResults: number = import.meta.env.VITE_EXTRA_RESULTS;
 const pokemonTotal: number = import.meta.env.VITE_TOTAL_POKEMON;
 
 let offset = 0;
-let selectedValue: string = "";
+let selectedValue: string = "0";
 let pokemonGenList: Pokemon[] = [];
 let pokemonTypeList: Pokemon[] = [];
 let isTypeSearch: boolean = false;
@@ -81,8 +90,38 @@ export async function FindPokemon(inputData: string): Promise<void> {
     ShowPokemon(data);
   } catch {
     pokemonContainer.innerHTML = `<h4>Pokemon name/ID not found, please try another pokemon.</h4>`;
-    showMoreResultsButton(true);
+    showMoreResultsButton(false);
   }
+}
+
+export async function FindPokemonInfo(inputData: string): Promise<void> {
+  try {
+    const min: number = randomIntFromInterval(0, 14);
+    const max: number = randomIntFromInterval(15, 30);
+    const res = await fetch(`${URL}/pokemon/${inputData.toLowerCase()}`);
+    const data: PokemonInfo = await res.json();
+    const pokemonMoves = data.moves.slice(min, max);
+    const moves = await FindPokemonInfoMoves(pokemonMoves);
+    showMoreResultsButton(true);
+    ShowPokemonInfo(data, moves);
+  } catch {
+    pokemonInfoContainer.innerHTML = `<h4>Pokemon name/ID not found, please try another pokemon.</h4>`;
+    showMoreResultsButton(false);
+  }
+}
+
+export async function FindPokemonInfoMoves(
+  moves: PokemonInfo["moves"]
+): Promise<PokemonMove[]> {
+  const results = await Promise.all(
+    moves.map(({ move }) =>
+      fetch(move.url)
+        .then((r) => r.json())
+        .catch(() => null)
+    )
+  );
+
+  return results.filter(Boolean);
 }
 
 export async function LoadResults(list: Pokemon[], showAllPokemon: boolean) {
@@ -94,10 +133,13 @@ export async function LoadResults(list: Pokemon[], showAllPokemon: boolean) {
     const nextResults = list.slice(offset, offset + extraResults);
     nextResults.forEach(ShowPokemon);
   }
-  offset += extraResults;
+  offset = offset + extraResults;
   const limitReached = showAllPokemon
     ? offset >= pokemonTotal
     : offset >= list.length || list.length <= extraResults;
+
+  // console.log(pokemonInfoBtn);
+
   showMoreResultsButton(limitReached);
   if (lang) setLanguage(lang);
 }
