@@ -5,6 +5,8 @@ export const pokemonContainer = document.getElementById(
 ) as HTMLElement;
 export const pokemonTypeBtn: NodeListOf<HTMLButtonElement> =
   document.querySelectorAll(".pokemonType");
+export const pokemonLogoBtn: NodeListOf<HTMLButtonElement> =
+  document.querySelectorAll("#pokemonLogo");
 export const generationCmb = document.getElementById(
   "pokemonGenCmb"
 ) as HTMLSelectElement;
@@ -68,12 +70,6 @@ export const pokemonInfoDescription = document.getElementById(
 export const pokemonInfoBtnCloseDescription = document.getElementById(
   "pokemonInfoBtnCloseDescription"
 ) as HTMLElement;
-export const pokemonInfoMovesName = document.getElementById(
-  "pokemonInfoMoveName"
-) as HTMLElement;
-export const pokemonInfoMovesNameType = document.getElementById(
-  "pokemonInfoMovesNameType"
-) as HTMLElement;
 export const pokemonInfoMovesDescription = document.getElementById(
   "pokemonInfoMovesDescription"
 ) as HTMLElement;
@@ -83,6 +79,12 @@ export const pokemonInfoDescriptionDesktop = document.getElementById(
 export const pokemonInfoMovesNameTypeColor = document.getElementById(
   "pokemonInfoMovesNameTypeColor"
 ) as HTMLSpanElement;
+export const pokemonInfoMovesContainer = document.getElementById(
+  "pokemonInfoMovesContainer"
+) as HTMLSpanElement;
+export const pokemonInfoMovesContainerDesktop = document.getElementById(
+  "pokemonInfoMovesContainerDesktop"
+) as HTMLElement;
 
 export function ShowPokemon(data: Pokemon): void {
   const types = data.types
@@ -137,14 +139,14 @@ export function ShowPokemonInfo(data: PokemonInfo, moves: PokemonMove[]): void {
       (moveData) =>
         `
       <button class="btn pokemonInfo__moves-type ${moveData.type.name}"
-      id="${moveData.id}" data-section="types" data-value="${moveData.type.name}">
+      id="${moveData.id}">
         ${moveData.name}
       </button>
   `
     )
     .join("");
-  //add pokemon data to HTML elements
 
+  //add pokemon data to HTML elements
   pokemonInfoImg.src =
     data.sprites.other["official-artwork"].front_default?.toString()!;
   pokemonInfoId.textContent = data.id.toString().padStart(3, "0");
@@ -161,6 +163,33 @@ export function ShowPokemonInfo(data: PokemonInfo, moves: PokemonMove[]): void {
   pokemonInfoTypesContainer.innerHTML = types;
   pokemonInfoMovesContent.innerHTML = ``;
   pokemonInfoMovesContent.innerHTML = pokemonMoves;
+}
+
+export function ShowPokemonInfoMove(move: PokemonMove): void {
+  pokemonInfoMovesContainer.innerHTML = ``;
+  pokemonInfoMovesContainer.innerHTML = `
+    <h4
+      class="pokemonInfo__moves-name ${move.type.name}">
+      ${move.name}
+      <span        
+        class="pokemonInfo__moves-name-type"
+        >(${move.type.name})</span
+      >
+    </h4>
+  `;
+  pokemonInfoMovesDescription.textContent = move.effect_entries.effect;
+  pokemonInfoMovesContainerDesktop.innerHTML = ``;
+  pokemonInfoMovesContainerDesktop.innerHTML = `
+    <h4 class="pokemonInfo__moves-name">
+      ${move.name}
+      <span        
+        class="pokemonInfo__moves-name-type"
+        >(${move.type.name})</span
+      >
+      <span        
+        class="pokemonInfo__moves-name-type-color ${move.type.name}"
+      ></span>
+    </h4>;`;
 }
 
 export function ChangePokemonTypeColorButton(type: string): void {

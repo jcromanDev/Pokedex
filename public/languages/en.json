@@ -43,5 +43,13 @@
     "dragon": "Dragon",
     "steel": "Steel",
     "fairy": "Fairy"
+  },
+
+  "information": {
+    "buttonTransfer": "Transfer",
+    "typeLabel": "Type",
+    "weightLabel": "Weight",
+    "heightLabel": "Height",
+    "movesLabel": "Moves"
   }
 }

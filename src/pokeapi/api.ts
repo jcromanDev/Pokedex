@@ -7,6 +7,11 @@ import {
   ShowPokemon,
   ShowPokemonInfo,
   randomIntFromInterval,
+  generationCmb,
+  pokemonInfoInput,
+  pokemonInput,
+  typeCmb,
+  ShowPokemonInfoMove,
 } from "./DOM";
 import type {
   Pokemon,
@@ -33,7 +38,11 @@ let nextResults: Pokemon[] = [];
 let isTypeSearch: boolean = false;
 
 export function Init() {
-  ShowPokemonGen(selectedValue);
+  generationCmb.value = "";
+  typeCmb.value = "";
+  pokemonInput.value = "";
+  pokemonInfoInput.value = "";
+  ShowPokemonGen("1");
 }
 
 //#region [Function handlers]
@@ -154,6 +163,14 @@ export async function FindPokemonInfoMoves(
   );
 
   return results.filter(Boolean);
+}
+
+export async function FindPokemonInfoMove(id: number) {
+  const res = await fetch(`${URL}/move/${id}}`);
+  const move: PokemonMove = await res.json();
+  console.log(move);
+
+  ShowPokemonInfoMove(move);
 }
 
 //#endregion

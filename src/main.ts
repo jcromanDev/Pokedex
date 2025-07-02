@@ -23,6 +23,7 @@ import {
   ShowPokemonType,
   ShowAllPokemon,
   ShowPokemonGen,
+  FindPokemonInfoMove,
 } from "./pokeapi/api";
 import {
   btnBack,
@@ -31,7 +32,9 @@ import {
   moreResultsBtn,
   pokemonContainer,
   pokemonInfoInput,
+  pokemonInfoTypesContainer,
   pokemonInput,
+  pokemonLogoBtn,
   pokemonTypeBtn,
   searchBtn,
   searchInfoBtn,
@@ -42,17 +45,22 @@ import mobileNav from "./utils/mobile-nav";
 import darkMode from "./utils/dark-mode";
 import { getLanguage, setLanguage } from "./utils/languages";
 import { initRouter, NavigateToHome, NavigateToInfo } from "./utils/router";
-
-generationCmb.value = "";
-typeCmb.value = "";
-pokemonInput.value = "";
-pokemonInfoInput.value = "";
+import headerObserver from "./utils/observers";
 
 mobileNav();
 darkMode();
+headerObserver();
 setLanguage(getLanguage());
 initRouter();
 Init();
+
+pokemonLogoBtn.forEach((button) => {
+  button.addEventListener("click", () => {
+    pokemonContainer.innerHTML = ``;
+    NavigateToHome();
+    Init();
+  });
+});
 
 pokemonContainer.addEventListener("click", (event: MouseEvent) => {
   const target = event.target as HTMLElement;
@@ -61,6 +69,18 @@ pokemonContainer.addEventListener("click", (event: MouseEvent) => {
   if (pokemonContent) {
     const id: string = pokemonContent.id!;
     NavigateToInfo(id);
+  }
+});
+
+pokemonInfoTypesContainer.addEventListener("click", (event: MouseEvent) => {
+  const target = event.target as HTMLElement;
+  const pokemonMove = target.closest(".pokemonInfo__moves-type") as HTMLElement;
+
+  if (pokemonMove) {
+    const id: string = pokemonMove.id;
+    console.log(id);
+
+    FindPokemonInfoMove(parseInt(id));
   }
 });
 

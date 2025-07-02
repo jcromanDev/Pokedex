@@ -13,7 +13,7 @@
     <title>Pokedex App</title>
   </head>
   <body>
-    <header class="container header">
+    <header id="header" class="container header">
       <div id="pokemonInfoBtnBack" class="header__pokemonInfo__btnBack">
         <button
           type="button"
@@ -168,7 +168,9 @@
       </nav>
       <div class="header__controls">
         <div class="header__logo">
-          <img src="./Pokedex_logo.png" alt="Pokemon logo" />
+          <button id="pokemonLogo">
+            <img src="./Pokedex_logo.png" alt="Pokemon logo" />
+          </button>
         </div>
         <div class="header__searchPokemon">
           <select id="pokemonGenCmb" class="header__cmbGeneration">
@@ -251,7 +253,9 @@
       <!-- Pokemon info header -->
       <div class="header__pokemonInfo__controls">
         <div class="header__pokemonInfo__logo">
-          <img src="./Pokedex_logo.png" alt="Pokemon logo" />
+          <button id="pokemonLogo">
+            <img src="./Pokedex_logo.png" alt="Pokemon logo" />
+          </button>
         </div>
         <div class="header__pokemonInfo__search">
           <input
@@ -713,9 +717,9 @@
             <button
               class="pokemonInfo__btn-transfer"
               id="pokemonInfoBtnTransfer"
-            >
-              Transfer
-            </button>
+              data-section="information"
+              data-value="buttonTransfer"
+            ></button>
             <div class="pokemonInfo__attributes-container">
               <div class="pokemonInfo__attributes-content">
                 <div
@@ -725,40 +729,47 @@
                   <!-- <div class="pokemonInfo__type fighting">Fighting</div>
                   <div class="pokemonInfo__type electric">Electric</div> -->
                 </div>
-                <small class="pokemonInfo__subtitle">Type</small>
+                <small
+                  class="pokemonInfo__subtitle"
+                  data-section="information"
+                  data-value="typeLabel"
+                ></small>
               </div>
               <hr class="pokemonInfo__attributes-separator" />
               <div class="pokemonInfo__attributes-content">
                 <p
                   class="pokemonInfo__attribute-stat no-border"
                   id="pokemonInfoWeight"
-                >
-                  43.7kg
-                </p>
-                <small class="pokemonInfo__subtitle">Weight</small>
+                ></p>
+                <small
+                  class="pokemonInfo__subtitle"
+                  data-section="information"
+                  data-value="weightLabel"
+                ></small>
               </div>
               <hr class="pokemonInfo__attributes-separator" />
               <div class="pokemonInfo__attributes-content">
-                <p class="pokemonInfo__attribute-stat" id="pokemonInfoHeight">
-                  1.5m
-                </p>
-                <small class="pokemonInfo__subtitle">Height</small>
+                <p
+                  class="pokemonInfo__attribute-stat"
+                  id="pokemonInfoHeight"
+                ></p>
+                <small
+                  class="pokemonInfo__subtitle"
+                  data-section="information"
+                  data-value="heightLabel"
+                ></small>
               </div>
             </div>
             <div class="pokemonInfo__moves-container">
-              <h4 class="pokemonInfo__moves-title">Moves</h4>
+              <h4
+                class="pokemonInfo__moves-title"
+                data-section="information"
+                data-value="movesLabel"
+              ></h4>
               <div
                 class="pokemonInfo__moves-content"
                 id="pokemonInfoMovesContent"
-              >
-                <!-- <button class="btn pokemonInfo__moves-type normal">dash</button>
-                <button class="btn pokemonInfo__moves-type water">
-                  Hydro pump
-                </button>
-                <button class="btn pokemonInfo__moves-type fighting">
-                  Super kick
-                </button> -->
-              </div>
+              ></div>
               <div
                 class="pokemonInfo__moves-description-container"
                 id="pokemonInfoDescription"
@@ -769,26 +780,11 @@
                 >
                   X
                 </button>
-                <h4
-                  class="pokemonInfo__moves-name fighting"
-                  id="pokemonInfoMoveName"
-                >
-                  Double kick
-                  <span
-                    id="pokemonInfoMovesNameType"
-                    class="pokemonInfo__moves-name-type"
-                    >(Fighting)</span
-                  >
-                </h4>
+                <div id="pokemonInfoMovesContainer"></div>
                 <p
                   id="pokemonInfoMovesDescription"
                   class="pokemonInfo__moves-description"
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Perferendis dolorum commodi praesentium veritatis distinctio
-                  quia voluptas maxime alias obcaecati! Voluptate, harum.
-                  Repellendus magni sed nostrum amet cum ipsa impedit laborum?
-                </p>
+                ></p>
               </div>
             </div>
           </div>
@@ -804,31 +800,31 @@
             X
           </button>
           <h2 class="pokemonInfo__moves-name-header">Move name:</h2>
-          <h4 class="pokemonInfo__moves-name" id="pokemonInfoMoveName">
-            Double kick
-            <span
-              id="pokemonInfoMovesNameType"
-              class="pokemonInfo__moves-name-type"
-              >(Fighting)</span
-            >
-            <span
-              id="pokemonInfoMovesNameTypeColor"
-              class="pokemonInfo__moves-name-type-color fighting"
-            ></span>
-          </h4>
+          <div id="pokemonInfMovesContainerDesktop"></div>
           <h6 class="pokemonInfo__moves-description-header">Description:</h6>
           <p
             id="pokemonInfoMovesDescription"
             class="pokemonInfo__moves-description"
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-            dolorum commodi praesentium veritatis distinctio quia voluptas
-            maxime alias obcaecati! Voluptate, harum. Repellendus magni sed
-            nostrum amet cum ipsa impedit laborum?
-          </p>
+          ></p>
         </div>
       </div>
     </main>
+    <div id="backToTop" class="backToTop">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="upArrow"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+        />
+      </svg>
+    </div>
     <footer class="container footer">
       <h3 class="footer__title">&ltcir;--- jcromanDev ---&gtcir;</h3>
     </footer>

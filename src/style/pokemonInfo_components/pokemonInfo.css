@@ -13,7 +13,7 @@
 }
 
 .pokemonInfo__img {
-  flex-grow: 1;
+  align-self: center;
   padding: 0.5rem 0;
   /* border: 1px solid red; */
 }
@@ -177,11 +177,11 @@
   position: relative;
   background-color: var(--clr-light);
   border-radius: 1rem;
-  /* border: 2px double var(--clr-dark);
+  border: 2px double var(--clr-dark);
   margin-top: 1rem;
-  padding: 4rem 1.5rem 1.5rem; */
-  max-height: 0;
-  overflow: hidden;
+  padding: 4rem 1.5rem 1.5rem;
+  /* max-height: 0;
+  overflow: hidden; */
 }
 
 .pokemonInfo__moves-description-container-desktop {
@@ -291,6 +291,10 @@
   .pokemonInfo__container {
     flex-direction: row-reverse;
     gap: 1rem;
+  }
+
+  .pokemonInfo__img {
+    align-self: flex-start;
   }
 
   .pokemonInfo__id {

@@ -120,6 +120,26 @@ button {
   box-shadow: 0 0 02rem rgba(0, 0, 0, 0.5);
 }
 
+.backToTop {
+  position: fixed;
+  font-size: var(--size-sm);
+  background-color: var(--clr-white);
+  bottom: 2rem;
+  right: 2rem;
+  padding: 0.5rem;
+  /* border: 1px groove var(--clr-black); */
+  border-radius: 70%;
+  box-shadow: 0 0 1rem 0.3rem rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.upArrow {
+  color: var(--clr-black);
+  width: var(--size-6xl);
+  height: var(--size-6xl);
+  display: block;
+}
 /* a {
   color: ;
 }
@@ -218,3 +238,25 @@ strong {
   background-color: var(--type-fairy);
   color: var(--clr-white);
 }
+
+/* xs */
+@media (min-width: 475px) {
+  .backToTop {
+    padding: 1rem;
+  }
+}
+
+/* sm */
+/* @media (min-width: 640px) {} */
+
+/* md */
+/*@media (min-width:768px){}*/
+
+/* Lg */
+/*@media (min-width:1024px){}*/
+
+/* xL */
+/*@media (min-width:1280px){}*/
+
+/* 2xL */
+/*@media (min-width:1536px){} */
