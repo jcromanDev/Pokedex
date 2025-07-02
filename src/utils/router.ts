@@ -1,3 +1,5 @@
+import { FindPokemonInfo } from "../pokeapi/api";
+
 const headerControls = document.querySelector(
   ".header__controls"
 ) as HTMLElement;
@@ -13,7 +15,20 @@ const pokemonInfoContainer = document.getElementById(
   "pokemonInfo"
 ) as HTMLElement;
 
-export const ShowSelectedPokemonInfo = (show: boolean) => {
+function HandleRoute() {
+  const hash = window.location.hash;
+
+  if (!hash || hash === "#home") {
+    ShowSelectedPokemonInfo(false);
+  } else if (hash.startsWith("#info/")) {
+    const id = hash.split("/")[1];
+    if (id) {
+      ShowSelectedPokemonInfo(true);
+      FindPokemonInfo(id);
+    }
+  }
+}
+const ShowSelectedPokemonInfo = (show: boolean) => {
   if (show) {
     headerControls.style.display = "none";
     headerType.style.display = "none";
@@ -32,3 +47,16 @@ export const ShowSelectedPokemonInfo = (show: boolean) => {
     headerBtnBack.style.display = "none";
   }
 };
+
+export function initRouter() {
+  window.addEventListener("hashchange", HandleRoute);
+  HandleRoute();
+}
+
+export function NavigateToHome() {
+  window.location.hash = "#home";
+}
+
+export function NavigateToInfo(id: string) {
+  window.location.hash = `#info/${id}`;
+}

@@ -1,5 +1,4 @@
 import type { Pokemon, PokemonInfo, PokemonMove } from "./types";
-import { ShowSelectedPokemonInfo } from "../utils/router";
 
 export const pokemonContainer = document.getElementById(
   "pokemonContainer"
@@ -162,8 +161,6 @@ export function ShowPokemonInfo(data: PokemonInfo, moves: PokemonMove[]): void {
   pokemonInfoTypesContainer.innerHTML = types;
   pokemonInfoMovesContent.innerHTML = ``;
   pokemonInfoMovesContent.innerHTML = pokemonMoves;
-
-  ShowSelectedPokemonInfo(true);
 }
 
 export function ChangePokemonTypeColorButton(type: string): void {

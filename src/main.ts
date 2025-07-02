@@ -11,20 +11,18 @@ import "./style/pokemonInfo_components/pokemonInfo.css";
 import "./style/utils.css";
 
 import {
-  GetAllPokemon,
-  getPokemonGenList,
-  getGetPokemonTypeList,
   getIsTypeSearch,
-  GetPokemonGen,
   getSelectedValue,
-  GetPokemonTypes,
-  LoadResults,
   setIsTypeSearch,
   setSelectedValue,
-  GetPokemonGenType,
   FindPokemon,
   FindPokemonInfo,
   Init,
+  ShowMoreResults,
+  ShowPokemonGenType,
+  ShowPokemonType,
+  ShowAllPokemon,
+  ShowPokemonGen,
 } from "./pokeapi/api";
 import {
   btnBack,
@@ -43,7 +41,7 @@ import {
 import mobileNav from "./utils/mobile-nav";
 import darkMode from "./utils/dark-mode";
 import { getLanguage, setLanguage } from "./utils/languages";
-import { ShowSelectedPokemonInfo } from "./utils/router";
+import { initRouter, NavigateToHome, NavigateToInfo } from "./utils/router";
 
 generationCmb.value = "";
 typeCmb.value = "";
@@ -53,7 +51,7 @@ pokemonInfoInput.value = "";
 mobileNav();
 darkMode();
 setLanguage(getLanguage());
-ShowSelectedPokemonInfo(false);
+initRouter();
 Init();
 
 pokemonContainer.addEventListener("click", (event: MouseEvent) => {
@@ -62,33 +60,34 @@ pokemonContainer.addEventListener("click", (event: MouseEvent) => {
 
   if (pokemonContent) {
     const id: string = pokemonContent.id!;
-    FindPokemonInfo(id);
+    NavigateToInfo(id);
   }
 });
 
 pokemonTypeBtn.forEach((button) => {
   button.addEventListener("click", (event: Event) => {
     const type = (event.currentTarget as HTMLButtonElement).id;
+    const value = getSelectedValue();
     pokemonContainer.innerHTML = ``;
     pokemonInput.value = "";
     setIsTypeSearch(true);
 
-    if (getSelectedValue() === "0") GetPokemonTypes(type);
-    else GetPokemonGenType(type);
+    if (value === "0") ShowPokemonType(type);
+    else ShowPokemonGenType(value, type);
   });
 });
 
 typeCmb.addEventListener("change", (event: Event) => {
   const type = (event.target as HTMLSelectElement).value;
+  const value = getSelectedValue();
   if (type !== "") {
     pokemonContainer.innerHTML = ``;
     pokemonInput.value = "";
     setIsTypeSearch(true);
     ChangePokemonTypeColorButton(type);
 
-    if (getSelectedValue() === "0") GetPokemonTypes(type);
-    // else if (type === "") Init();
-    else GetPokemonGenType(type);
+    if (value === "0") ShowPokemonType(type);
+    else ShowPokemonGenType(value, type);
   }
 });
 
@@ -101,20 +100,17 @@ generationCmb.addEventListener("change", (event: Event) => {
     pokemonInput.value = "";
     typeCmb.value = "";
     pokemonContainer.innerHTML = ``;
-    if (getSelectedValue() === "0") GetAllPokemon();
-    else GetPokemonGen(parseInt(getSelectedValue()));
+    if (generation === "0") ShowAllPokemon();
+    else ShowPokemonGen(generation);
   }
 });
 
 moreResultsBtn.addEventListener("click", () => {
-  if (getSelectedValue() === "0") {
-    if (getIsTypeSearch()) LoadResults(getGetPokemonTypeList(), false);
-    else LoadResults(getPokemonGenList(), true);
-  } else LoadResults(getPokemonGenList(), false);
+  ShowMoreResults(getSelectedValue(), getIsTypeSearch());
 });
 
 pokemonInput.addEventListener("keyup", (event: KeyboardEvent) => {
-  const inputData = pokemonInput.value;
+  const inputData = pokemonInput.value.trim();
   if (event.key === "Enter") {
     if (inputData != "") FindPokemon(inputData);
     else Init();
@@ -122,13 +118,13 @@ pokemonInput.addEventListener("keyup", (event: KeyboardEvent) => {
 });
 
 searchBtn.addEventListener("click", () => {
-  const inputData = pokemonInput.value;
+  const inputData = pokemonInput.value.trim();
   if (inputData != "") FindPokemon(inputData);
   else Init();
 });
 
 pokemonInfoInput.addEventListener("keyup", (event: KeyboardEvent) => {
-  const inputData = pokemonInfoInput.value;
+  const inputData = pokemonInfoInput.value.trim();
   if (event.key === "Enter") {
     if (inputData != "") FindPokemonInfo(inputData);
     else Init();
@@ -136,12 +132,12 @@ pokemonInfoInput.addEventListener("keyup", (event: KeyboardEvent) => {
 });
 
 searchInfoBtn.addEventListener("click", () => {
-  const inputData = pokemonInfoInput.value;
+  const inputData = pokemonInfoInput.value.trim();
   if (inputData != "") FindPokemonInfo(inputData);
   else Init();
 });
 
 btnBack.addEventListener("click", () => {
   pokemonInfoInput.value = "";
-  ShowSelectedPokemonInfo(false);
+  NavigateToHome();
 });
