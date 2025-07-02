@@ -11,19 +11,17 @@ import "./style/pokemonInfo_components/pokemonInfo.css";
 import "./style/utils.css";
 
 import {
-  GetAllPokemon,
-  getPokemonGenList,
-  getGetPokemonTypeList,
+  ShowAllPokemon,
   getIsTypeSearch,
-  GetPokemonGen,
   getSelectedValue,
-  GetPokemonTypes,
-  LoadResults,
   setIsTypeSearch,
   setSelectedValue,
-  GetPokemonGenType,
   FindPokemon,
   Init,
+  ShowMoreResults,
+  ShowPokemonGen,
+  ShowPokemonType,
+  ShowPokemonGenType,
 } from "./pokeapi/api";
 import {
   btnBack,
@@ -52,7 +50,7 @@ mobileNav();
 darkMode();
 setLanguage(getLanguage());
 Init();
-showPokemonInfo(true);
+showPokemonInfo(false);
 
 pokemonTypeBtn.forEach((button) => {
   button.addEventListener("click", (event: Event) => {
@@ -61,8 +59,8 @@ pokemonTypeBtn.forEach((button) => {
     pokemonInput.value = "";
     setIsTypeSearch(true);
 
-    if (getSelectedValue() === "0") GetPokemonTypes(type);
-    else GetPokemonGenType(type);
+    if (getSelectedValue() === "0") ShowPokemonType(type);
+    else ShowPokemonGenType(getSelectedValue(), type);
   });
 });
 
@@ -74,9 +72,8 @@ typeCmb.addEventListener("change", (event: Event) => {
     setIsTypeSearch(true);
     ChangePokemonTypeColorButton(type);
 
-    if (getSelectedValue() === "0") GetPokemonTypes(type);
-    // else if (type === "") Init();
-    else GetPokemonGenType(type);
+    if (getSelectedValue() === "0") ShowPokemonType(type);
+    else ShowPokemonGenType(getSelectedValue(), type);
   }
 });
 
@@ -89,16 +86,16 @@ generationCmb.addEventListener("change", (event: Event) => {
     pokemonInput.value = "";
     typeCmb.value = "";
     pokemonContainer.innerHTML = ``;
-    if (getSelectedValue() === "0") GetAllPokemon();
-    else GetPokemonGen(parseInt(getSelectedValue()));
+
+    if (generation === "0") ShowAllPokemon();
+    else ShowPokemonGen(generation);
   }
 });
 
 moreResultsBtn.addEventListener("click", () => {
-  if (getSelectedValue() === "0") {
-    if (getIsTypeSearch()) LoadResults(getGetPokemonTypeList(), false);
-    else LoadResults(getPokemonGenList(), true);
-  } else LoadResults(getPokemonGenList(), false);
+  const selectedValue: string = getSelectedValue();
+  const isTypeSearch: boolean = getIsTypeSearch();
+  ShowMoreResults(selectedValue, isTypeSearch);
 });
 
 pokemonInput.addEventListener("keyup", (event: KeyboardEvent) => {
