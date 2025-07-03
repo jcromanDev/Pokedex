@@ -31,8 +31,9 @@ import {
   generationCmb,
   moreResultsBtn,
   pokemonContainer,
+  pokemonInfoBtnCloseDescription,
   pokemonInfoInput,
-  pokemonInfoTypesContainer,
+  pokemonInfoMovesContent,
   pokemonInput,
   pokemonLogoBtn,
   pokemonTypeBtn,
@@ -46,6 +47,10 @@ import darkMode from "./utils/dark-mode";
 import { getLanguage, setLanguage } from "./utils/languages";
 import { initRouter, NavigateToHome, NavigateToInfo } from "./utils/router";
 import headerObserver from "./utils/observers";
+import {
+  changeStateDescriptionContainer,
+  getDescriptionContainerState,
+} from "./utils/description-container";
 
 mobileNav();
 darkMode();
@@ -72,15 +77,14 @@ pokemonContainer.addEventListener("click", (event: MouseEvent) => {
   }
 });
 
-pokemonInfoTypesContainer.addEventListener("click", (event: MouseEvent) => {
+pokemonInfoMovesContent.addEventListener("click", (event: MouseEvent) => {
   const target = event.target as HTMLElement;
   const pokemonMove = target.closest(".pokemonInfo__moves-type") as HTMLElement;
 
   if (pokemonMove) {
     const id: string = pokemonMove.id;
-    console.log(id);
-
     FindPokemonInfoMove(parseInt(id));
+    changeStateDescriptionContainer(false);
   }
 });
 
@@ -160,4 +164,14 @@ searchInfoBtn.addEventListener("click", () => {
 btnBack.addEventListener("click", () => {
   pokemonInfoInput.value = "";
   NavigateToHome();
+  changeStateDescriptionContainer(true);
+});
+
+pokemonInfoBtnCloseDescription.forEach((button) =>
+  button.addEventListener("click", () => changeStateDescriptionContainer(true))
+);
+
+window.addEventListener("resize", () => {
+  const descriptionContainerState = getDescriptionContainerState();
+  if (descriptionContainerState) changeStateDescriptionContainer(false);
 });

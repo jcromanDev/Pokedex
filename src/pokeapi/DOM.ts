@@ -67,12 +67,10 @@ export const pokemonInfoMovesContent = document.getElementById(
 export const pokemonInfoDescription = document.getElementById(
   "pokemonInfoDescription"
 ) as HTMLElement;
-export const pokemonInfoBtnCloseDescription = document.getElementById(
-  "pokemonInfoBtnCloseDescription"
-) as HTMLElement;
-export const pokemonInfoMovesDescription = document.getElementById(
-  "pokemonInfoMovesDescription"
-) as HTMLElement;
+export const pokemonInfoBtnCloseDescription: NodeListOf<HTMLButtonElement> =
+  document.querySelectorAll("#pokemonInfoBtnCloseDescription");
+export const pokemonInfoMovesDescription: NodeListOf<HTMLElement> =
+  document.querySelectorAll("#pokemonInfoMovesDescription");
 export const pokemonInfoDescriptionDesktop = document.getElementById(
   "pokemonInfoDescriptionDesktop"
 ) as HTMLElement;
@@ -82,8 +80,8 @@ export const pokemonInfoMovesNameTypeColor = document.getElementById(
 export const pokemonInfoMovesContainer = document.getElementById(
   "pokemonInfoMovesContainer"
 ) as HTMLSpanElement;
-export const pokemonInfoMovesContainerDesktop = document.getElementById(
-  "pokemonInfoMovesContainerDesktop"
+export const pokemonInfoDescriptionDesktopContainer = document.getElementById(
+  "pokemonInfoDescriptionDesktopContainer"
 ) as HTMLElement;
 
 export function ShowPokemon(data: Pokemon): void {
@@ -176,20 +174,68 @@ export function ShowPokemonInfoMove(move: PokemonMove): void {
         >(${move.type.name})</span
       >
     </h4>
+     <div class="pokemonInfo__moves-description-stats">
+      <div class="pokemonInfo__moves-description-stats">
+        <h5 class="pokemonInfo__moves-titles"
+          data-section="description" data-value="target">Target: </h5>
+        <h4 class="pokemonInfo__moves-name">
+        ${move.target.name}
+        </h4>
+      </div>
+      <div class="pokemonInfo__moves-description-stats">
+        <h5 class="pokemonInfo__moves-titles"
+          data-section="description" data-value="power">Power: </h5>
+        <h4 class="pokemonInfo__moves-name">
+        ${move.power != null ? move.power : 0}
+        </h4>
+      </div>
+      <div class="pokemonInfo__moves-description-stats">
+      <h5 class="pokemonInfo__moves-titles"
+          data-section="description" data-value="priority">Priority: </h5>
+        <h4 class="pokemonInfo__moves-name">
+        ${move.priority}
+        </h4>
+      </div>
+    </div>
   `;
-  pokemonInfoMovesDescription.textContent = move.effect_entries.effect;
-  pokemonInfoMovesContainerDesktop.innerHTML = ``;
-  pokemonInfoMovesContainerDesktop.innerHTML = `
-    <h4 class="pokemonInfo__moves-name">
-      ${move.name}
-      <span        
-        class="pokemonInfo__moves-name-type"
-        >(${move.type.name})</span
-      >
-      <span        
-        class="pokemonInfo__moves-name-type-color ${move.type.name}"
-      ></span>
-    </h4>;`;
+
+  pokemonInfoMovesDescription.forEach(
+    (description) =>
+      (description.textContent = move.effect_entries[0].effect.trim())
+  );
+  pokemonInfoDescriptionDesktopContainer.innerHTML = ``;
+  pokemonInfoDescriptionDesktopContainer.innerHTML = `
+    <div class="pokemonInfo__moves-description-stats">
+      <h3 class="pokemonInfo__moves-name-header"
+      data-section="description"
+      data-value="moveName">Move name: </h3>
+        <h4 class="pokemonInfo__moves-name ${move.type.name}">
+            ${move.name}
+            <span        
+              class="pokemonInfo__moves-name-type"
+              >(${move.type.name})</span
+            >            
+        </h4>    
+    
+    </div>
+    <div class="pokemonInfo__moves-description-stats">
+      <h5 class="pokemonInfo__moves-titles"
+        data-section="description" data-value="target">Target: </h5>
+      <h4 class="pokemonInfo__moves-name">
+      ${move.target.name}
+      </h4>
+      <h5 class="pokemonInfo__moves-titles"
+        data-section="description" data-value="power">Power: </h5>
+      <h4 class="pokemonInfo__moves-name">
+      ${move.power != null ? move.power : 0}
+      </h4>
+      <h5 class="pokemonInfo__moves-titles"
+        data-section="description" data-value="priority">Priority: </h5>
+      <h4 class="pokemonInfo__moves-name">
+      ${move.priority}
+      </h4>
+    </div>
+    `;
 }
 
 export function ChangePokemonTypeColorButton(type: string): void {
@@ -285,6 +331,22 @@ export function showMoreResultsButton(hidden: boolean) {
   if (hidden) moreResultsBtn.style.display = "none";
   else moreResultsBtn.style.display = "block";
 }
+
+// export function ShowDescriptionContainer(hidden: boolean) {
+//   if (hidden) {
+//     pokemonInfoDescriptionDesktop.style.display = "none";
+//     pokemonInfoDescription.style.display = "none";
+//   } else {
+//     const desktopScreen = window.innerWidth > 640;
+//     if (desktopScreen) {
+//       pokemonInfoDescriptionDesktop.style.display = "block";
+//       pokemonInfoDescription.style.display = "none";
+//     } else {
+//       pokemonInfoDescriptionDesktop.style.display = "none";
+//       pokemonInfoDescription.style.display = "block";
+//     }
+//   }
+// }
 
 export function randomIntFromInterval(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1) + min);

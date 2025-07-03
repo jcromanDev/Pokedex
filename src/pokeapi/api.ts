@@ -1,3 +1,4 @@
+import { changeStateDescriptionContainer } from "../utils/description-container";
 import { getLanguage, setLanguage } from "../utils/languages";
 import { getLimitReach, PaginateList } from "../utils/pagination";
 import {
@@ -43,6 +44,7 @@ export function Init() {
   pokemonInput.value = "";
   pokemonInfoInput.value = "";
   ShowPokemonGen("1");
+  changeStateDescriptionContainer(true);
 }
 
 //#region [Function handlers]
@@ -166,10 +168,8 @@ export async function FindPokemonInfoMoves(
 }
 
 export async function FindPokemonInfoMove(id: number) {
-  const res = await fetch(`${URL}/move/${id}}`);
+  const res = await fetch(`${URL}/move/${id}`);
   const move: PokemonMove = await res.json();
-  console.log(move);
-
   ShowPokemonInfoMove(move);
 }
 

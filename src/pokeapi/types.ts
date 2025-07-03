@@ -16,7 +16,9 @@ export type PokemonMove = {
   id: number;
   name: string;
   effect_entries: {
-    effect: string;
+    [key: string]: {
+      effect: string;
+    };
   };
   power: number | null;
   priority: number;
