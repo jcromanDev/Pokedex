@@ -50,5 +50,11 @@
     "weightLabel": "Peso",
     "heightLabel": "Altura",
     "movesLabel": "Movimientos"
+  },
+  "description": {
+    "moveName": "Nombre de Movimiento:  ",
+    "target": "Objetivo: ",
+    "power": "Poder: ",
+    "priority": "Prioridad: "
   }
 }

@@ -1,4 +1,4 @@
-import { FindPokemonInfo } from "../pokeapi/api";
+import { showPokemonDetails } from "../controllers/pokemon.controller";
 
 const headerControls = document.querySelector(
   ".header__controls"
@@ -24,7 +24,7 @@ function HandleRoute() {
     const id = hash.split("/")[1];
     if (id) {
       ShowSelectedPokemonInfo(true);
-      FindPokemonInfo(id);
+      showPokemonDetails(id);
     }
   }
 }
