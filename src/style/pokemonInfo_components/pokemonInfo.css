@@ -1,5 +1,5 @@
 .pokemonInfo {
-  z-index: 9999;
+  z-index: 2;
 }
 
 .pokemonInfo__container {
@@ -20,7 +20,7 @@
 
 .pokemonInfo__wrapper {
   position: relative;
-  z-index: 999;
+  z-index: 1;
   padding-bottom: 20px;
 }
 

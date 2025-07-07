@@ -13,6 +13,10 @@ import {
   resetOffsets,
   getIsTypeSearch,
   getSelectedValue,
+  setCurrentList,
+  setCurrentOffset,
+  getCurrentList,
+  getCurrentOffset,
 } from "../store/pokemon.store";
 import {
   randomIntFromInterval,
@@ -29,9 +33,9 @@ import { setupReziseHandler } from "../dom/events/UI.events";
 import mobileNav from "../utils/mobile-nav";
 import darkMode from "../utils/dark-mode";
 import headerObserver from "../utils/observers";
-import { getLanguage, setLanguage } from "../utils/languages";
+import { getLanguage, setLanguage, updateLanguage } from "../utils/languages";
 import { initRouter } from "../utils/router";
-import { errorHandler, initializeErrorHandler } from "../utils/errorsHandlets";
+import { initializeErrorHandler } from "../utils/errorsHandlets";
 
 const EXTRA_RESULTS = Number(import.meta.env.VITE_EXTRA_RESULTS);
 const POKEMON_TOTAL = Number(import.meta.env.VITE_TOTAL_POKEMON);
@@ -61,7 +65,10 @@ export async function showAllPokemon(): Promise<void> {
   state.list = await fetchPokemonList(0, EXTRA_RESULTS);
   state.list.forEach(renderPokemonCard);
   state.allPokemonOffset += EXTRA_RESULTS;
+  setCurrentList(state.list);
+  setCurrentOffset(state.allPokemonOffset);
   showMoreResultsButton(state.list.length >= POKEMON_TOTAL);
+  updateLanguage();
 }
 
 export async function showPokemonByGeneration(gen: string): Promise<void> {
@@ -72,9 +79,12 @@ export async function showPokemonByGeneration(gen: string): Promise<void> {
   const results = PaginateList(state.genList, 0, EXTRA_RESULTS);
   results.forEach(renderPokemonCard);
   state.genOffset += EXTRA_RESULTS;
+  setCurrentList(state.genList);
+  setCurrentOffset(state.genOffset);
   showMoreResultsButton(
     getLimitReach(state.genList, state.genOffset, EXTRA_RESULTS)
   );
+  updateLanguage();
 }
 
 export async function showPokemonByType(type: string): Promise<void> {
@@ -85,9 +95,12 @@ export async function showPokemonByType(type: string): Promise<void> {
   const results = PaginateList(state.typeList, 0, EXTRA_RESULTS);
   results.forEach(renderPokemonCard);
   state.typeOffset += EXTRA_RESULTS;
+  setCurrentList(state.typeList);
+  setCurrentOffset(state.typeOffset);
   showMoreResultsButton(
     getLimitReach(state.typeList, state.typeOffset, EXTRA_RESULTS)
   );
+  updateLanguage();
 }
 
 export async function showPokemonByGenType(
@@ -101,45 +114,49 @@ export async function showPokemonByGenType(
   const results = PaginateList(state.genTypeList, 0, EXTRA_RESULTS);
   results.forEach(renderPokemonCard);
   state.genTypeOffset += EXTRA_RESULTS;
+  setCurrentList(state.genTypeList);
+  setCurrentOffset(state.genTypeOffset);
   showMoreResultsButton(
     getLimitReach(state.genTypeList, state.genTypeOffset, EXTRA_RESULTS)
   );
+  updateLanguage();
 }
 
 export async function showPokemon(inputData: string): Promise<void> {
-  try {
-    resetContainer();
-    initializeErrorHandler();
-    const results = await fetchSinglePokemon(inputData);
-    renderPokemonCard(results);
-    showMoreResultsButton(true);
-  } catch (error) {
-    errorHandler("Pokemon not found, please check your data andtry again");
-  }
+  resetContainer();
+  initializeErrorHandler();
+  const results = await fetchSinglePokemon(inputData);
+  renderPokemonCard(results);
+  showMoreResultsButton(true);
+  updateLanguage();
 }
 
 export async function showPokemonDetails(inputData: string): Promise<void> {
-  try {
-    initializeErrorHandler();
-    const min: number = randomIntFromInterval(0, 14);
-    const max: number = randomIntFromInterval(15, 30);
-    const results = await fetchSinglePokemon(inputData);
-    const pokemonMoves = results.moves.slice(min, max);
-    const moves = await fetchPokemonMoveList(pokemonMoves);
-    showMoreResultsButton(true);
-    renderPokemonDetails(results, moves);
-  } catch (error) {
-    errorHandler("Pokemon not found, please check your data andtry again");
-  }
+  initializeErrorHandler();
+  const min: number = randomIntFromInterval(0, 14);
+  const max: number = randomIntFromInterval(15, 30);
+  const results = await fetchSinglePokemon(inputData);
+  const pokemonMoves = results.moves.slice(min, max);
+  const moves = await fetchPokemonMoveList(pokemonMoves);
+  showMoreResultsButton(true);
+  renderPokemonDetails(results, moves);
+  updateLanguage();
 }
 
 export async function showPokemonMove(id: number): Promise<void> {
   const move = await fetchSingleMove(id);
   renderPokemonMoveDetail(move);
+  updateLanguage();
 }
 
 export function showMoreResults(): void {
   loadMoreResults(getSelectedValue() === "0", getIsTypeSearch());
+}
+
+export function checkMoreResultsBtn(): void {
+  showMoreResultsButton(
+    getLimitReach(getCurrentList(), getCurrentOffset(), EXTRA_RESULTS)
+  );
 }
 
 export async function loadMoreResults(
@@ -180,4 +197,5 @@ export async function loadMoreResults(
     ? getLimitReach(state.genTypeList, state.genTypeOffset, EXTRA_RESULTS)
     : getLimitReach(state.genList, state.genOffset, EXTRA_RESULTS);
   showMoreResultsButton(limitReached);
+  updateLanguage();
 }

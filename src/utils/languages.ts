@@ -48,3 +48,9 @@ export function setLanguage(lang: string | null) {
 export function getLanguage() {
   return localStorage.getItem("lang");
 }
+
+export function updateLanguage() {
+  const lang = getLanguage();
+
+  if (lang) setLanguage(lang);
+}

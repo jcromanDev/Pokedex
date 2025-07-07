@@ -58,5 +58,13 @@
     "target": "Target: ",
     "power": "Power: ",
     "priority": "Priority: "
+  },
+  "error": {
+    "title": "Who's that Pokemon?"
+  },
+  "modal": {
+    "title": "Transference in progress",
+    "pokemonCenter": "Pokemon center",
+    "doneBtn": "Done"
   }
 }

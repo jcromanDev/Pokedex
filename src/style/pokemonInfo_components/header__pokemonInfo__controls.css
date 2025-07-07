@@ -3,7 +3,7 @@
   position: absolute;
   top: 0.5rem;
   left: 1rem;
-  z-index: 9999;
+  z-index: 1;
 }
 
 .header__pokemonInfo__btnBack button {

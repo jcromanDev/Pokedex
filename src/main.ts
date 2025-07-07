@@ -10,6 +10,9 @@ import "./style/pokemonInfo_components/pokemonInfo.css";
 import "./style/pokemonInfo_components/description.css";
 
 import "./style/error_components/error.css";
+import "./style/modal_components/modal.css";
+import "./style/modal_components/animations.css";
+import "./style/modal_components/mobileAnimation.css";
 
 import "./style/utils.css";
 import { init } from "./controllers/pokemon.controller";

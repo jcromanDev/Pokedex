@@ -1,5 +1,4 @@
 import type { PokemonMove } from "../../types/pokemon.types";
-import { getLanguage, setLanguage } from "../../utils/languages";
 
 export const pokemonInfoMovesContainer = document.getElementById(
   "pokemonInfoMovesContainer"
@@ -55,7 +54,4 @@ export function renderPokemonMoveDetail(move: PokemonMove): void {
         move.priority
       }</h4>
     </div>`;
-
-  let lang = getLanguage();
-  if (lang) setLanguage(lang);
 }

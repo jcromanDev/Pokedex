@@ -58,3 +58,19 @@ export const all = document.getElementById("all") as HTMLElement;
 export const pokemonInfo = document.getElementById(
   "pokemonInfo"
 ) as HTMLElement;
+export const errorClientContainer = document.getElementById(
+  "errorClientContainer"
+) as HTMLElement;
+export const transferenceBtn = document.getElementById(
+  "pokemonInfoBtnTransfer"
+) as HTMLButtonElement;
+export const dialog = document.getElementById("dialog") as HTMLDialogElement;
+export const closeModalBtn = document.getElementById(
+  "closeModalBtn"
+) as HTMLButtonElement;
+export const modalAnimationsModels = document.getElementById(
+  "modalAnimationsModels"
+) as HTMLElement;
+export const pokemonModal = document.getElementById(
+  "pokemonModal"
+) as HTMLElement;

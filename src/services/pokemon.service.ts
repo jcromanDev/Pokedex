@@ -4,6 +4,7 @@ import type {
   PokemonGenerationResource,
   PokemonMove,
 } from "../types/pokemon.types";
+import { customErrorHandler } from "../utils/errorsHandlets";
 
 const URL = import.meta.env.VITE_POKEAPI_URL;
 
@@ -55,6 +56,7 @@ export async function fetchPokemonByGenAndType(
 
 export async function fetchSinglePokemon(inputData: string): Promise<Pokemon> {
   const res = await fetch(`${URL}/pokemon/${inputData.toLowerCase()}`);
+  if (!res.ok) customErrorHandler(res.status);
   return await res.json();
 }
 

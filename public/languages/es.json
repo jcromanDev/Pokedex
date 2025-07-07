@@ -56,5 +56,13 @@
     "target": "Objetivo: ",
     "power": "Poder: ",
     "priority": "Prioridad: "
+  },
+  "error": {
+    "title": "¿Quién es ese Pokemon?"
+  },
+  "modal": {
+    "title": "Transferencia en proceso",
+    "pokemonCenter": "Centro pokemon",
+    "doneBtn": "Hecho"
   }
 }

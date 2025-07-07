@@ -1,0 +1,86 @@
+.modal__animationContentMobile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.modal__animationContentMobile-wrapper {
+  position: relative;
+  width: 8rem;
+  height: 10rem;
+  margin: 0 auto;
+}
+
+.modal__pokeballImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.img-bn {
+  z-index: 1;
+  filter: grayscale(100%);
+}
+
+.img-color {
+  z-index: 2;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.2s ease-out;
+}
+
+.modal__pokemonArrow {
+  transform: rotate(180deg);
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* xs */
+/*@media (min-width:475px){}*/
+
+/* sm */
+@media (min-width: 640px) {
+  .modal__animationContentMobile {
+    flex-direction: row;
+  }
+
+  .modal__pokemonArrow {
+    transform: rotate(90deg);
+  }
+}
+
+/* md */
+@media (min-width: 768px) {
+  .modal__animationContentMobile-wrapper {
+    width: 9rem;
+    height: 11rem;
+  }
+  .modal__pokemonArrow {
+    transform: rotate(90deg);
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+/* Lg */
+@media (min-width: 1024px) {
+  .modal__animationContentMobile-wrapper {
+    width: 10rem;
+    height: 12rem;
+  }
+  .modal__pokemonArrow {
+    transform: rotate(90deg);
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+/* xL */
+/*@media (min-width:1280px){}*/
+
+/* 2xL */
+/*@media (min-width:1536px){} */

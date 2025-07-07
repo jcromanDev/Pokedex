@@ -1,5 +1,4 @@
 import type { Pokemon } from "../../types/pokemon.types";
-import { getLanguage, setLanguage } from "../../utils/languages";
 
 export const pokemonContainer = document.getElementById(
   "pokemonContainer"
@@ -36,6 +35,4 @@ export function renderPokemonCard(data: Pokemon): void {
         </div>
     </div>`;
   pokemonContainer.appendChild(div);
-  let lang = getLanguage();
-  if (lang) setLanguage(lang);
 }

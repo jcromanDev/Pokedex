@@ -1,0 +1,69 @@
+.modal__animationContentDesktop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: -4rem;
+}
+
+.modal__pokeball {
+  opacity: 0.3;
+  width: 2rem;
+  height: 2rem;
+}
+
+.modal__pokeball:nth-child(1) {
+  transform: rotate(-45deg);
+  margin-top: 3rem;
+}
+
+.modal__pokeball:nth-child(2) {
+  transform: rotate(-25deg);
+  margin-top: 1rem;
+}
+
+.modal__pokeball:nth-child(3) {
+  margin-top: 0;
+}
+
+.modal__pokeball:nth-child(4) {
+  transform: rotate(25deg);
+  margin-top: 1rem;
+}
+
+.modal__pokeball:nth-child(5) {
+  transform: rotate(45deg);
+  margin-top: 3rem;
+}
+
+/* xs */
+/*@media (min-width:475px){}*/
+
+/* sm */
+/*@media (min-width:640px){}*/
+
+/* md */
+@media (min-width: 768px) {
+  .modal__pokeball {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+/* Lg */
+@media (min-width: 1024px) {
+  .modal__animationContentDesktop {
+    gap: 2rem;
+    margin-top: -6rem;
+  }
+  .modal__pokeball {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+/* xL */
+/* @media (min-width:1280px){} */
+
+/* 2xL */
+/*@media (min-width:1536px){} */

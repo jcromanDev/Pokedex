@@ -1,5 +1,4 @@
 import type { Pokemon, PokemonMove } from "../../types/pokemon.types";
-import { getLanguage, setLanguage } from "../../utils/languages";
 
 export const PokemonImg = document.getElementById(
   "pokemonInfoImg"
@@ -64,7 +63,4 @@ export function renderPokemonDetails(
   PokemonMovesContent.innerHTML = ``;
   PokemonTypesContainer.innerHTML = types;
   PokemonMovesContent.innerHTML = pokemonMoves;
-
-  let lang = getLanguage();
-  if (lang) setLanguage(lang);
 }

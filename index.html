@@ -5,6 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="pokemon PokeApi jcromanDev jcroman.dev" />
+    <meta
+      name="description"
+      content="Explora información de todos los Pokémon con esta Pokédex moderna usando la PokéAPI."
+    />
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
@@ -813,14 +818,11 @@
         </div>
       </div>
       <div id="allError" class="container error__container">
-        <h1 class="error__title">Who's that pokemon</h1>
-        <img class="error_img" src="/Pokemon__error.png" alt="error image" />
-        <div id="errorMessage" class="error__message">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam
-          eligendi nisi fugiat tenetur iusto, odio esse accusamus similique
-          inventore enim natus dicta id harum aliquid et voluptates possimus
-          maiores ipsum.
+        <div id="errorClientContainer" class="error__clientErrorContainer">
+          <h1 class="error__title" data-section="error" data-value="title"></h1>
+          <img class="error_img" src="/Pokemon__error.png" alt="error image" />
         </div>
+        <div id="errorMessage" class="error__message"></div>
       </div>
     </main>
     <div id="backToTop" class="backToTop">
@@ -839,6 +841,42 @@
         />
       </svg>
     </div>
+    <dialog id="dialog" class="container modal">
+      <div id="modalContainer" class="modal__container">
+        <h4
+          id="modalTitle"
+          class="modal__title"
+          data-section="modal"
+          data-value="title"
+        ></h4>
+        <div class="modal__animationContainer">
+          <div id="pokemonModal" class="modal__animationContent"></div>
+          <div id="modalAnimationsModels" class="modal__animationContent"></div>
+          <div class="modal__animationContent">
+            <img
+              src="/pokemonCenter2.png"
+              alt="Pokemon Center"
+              class="modal__pokemonCenter"
+            />
+            <h2
+              class="modal__pokemonCenterName"
+              data-section="modal"
+              data-value="pokemonCenter"
+            ></h2>
+          </div>
+        </div>
+        <div id="modalControls" class="modal__controls">
+          <p class="modal__description"></p>
+          <buttonn
+            id="closeModalBtn"
+            class="modal__doneBtn"
+            data-section="modal"
+            data-value="doneBtn"
+          ></buttonn>
+        </div>
+      </div>
+      <!-- <button id="closeModalBtn" class="modal__closeModalBtn">X</button> -->
+    </dialog>
     <footer class="container footer">
       <h3 class="footer__title">&ltcir;--- jcromanDev ---&gtcir;</h3>
     </footer>

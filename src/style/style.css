@@ -8,7 +8,9 @@
 
   /* Controls */
   --clr-white-btn: #f7f7f7;
+  --clr-black-btn: #1c1c1c;
   --clr-cmb: #f1f1f1;
+  --clr-modal-title: #eb6565;
   --clr-btn-back: linear-gradient(to right, #dad993, #ddc124);
   --clr-btn-transfer: linear-gradient(to right, #9eda93, #22cba8);
   --clr-separator: #6eecb7;
@@ -73,6 +75,7 @@ body {
   min-height: 100vh;
   background-color: var(--clr-light);
   color: var(--clr-black);
+  position: relative;
 }
 
 main {
@@ -123,7 +126,7 @@ button {
 .backToTop {
   position: fixed;
   font-size: var(--size-sm);
-  background-color: var(--clr-white);
+  background-color: var(--clr-white-btn);
   bottom: 2rem;
   right: 2rem;
   padding: 0.5rem;
@@ -131,11 +134,11 @@ button {
   border-radius: 70%;
   box-shadow: 0 0 1rem 0.3rem rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  z-index: 9999;
+  z-index: 2;
 }
 
 .upArrow {
-  color: var(--clr-black);
+  color: var(--clr-black-btn);
   width: var(--size-6xl);
   height: var(--size-6xl);
   display: block;

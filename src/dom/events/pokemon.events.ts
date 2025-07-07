@@ -1,4 +1,5 @@
 import {
+  checkMoreResultsBtn,
   initializePokemonData,
   showAllPokemon,
   showMoreResults,
@@ -11,6 +12,8 @@ import {
 } from "../../controllers/pokemon.controller";
 import {
   btnBack,
+  closeModalBtn,
+  dialog,
   generationCmb,
   pokemonInfoBtnCloseDescription,
   pokemonInfoDescriptionDesktopContainer,
@@ -22,6 +25,7 @@ import {
   pokemonTypeBtn,
   searchBtn,
   searchInfoBtn,
+  transferenceBtn,
   typeCmb,
 } from "../elements.dom";
 import {
@@ -36,6 +40,9 @@ import {
 } from "../../store/ui.store";
 import { changeStateDescriptionContainer } from "../../utils/description-container";
 import { NavigateToHome, NavigateToInfo } from "../../utils/router";
+import { initializeErrorHandler } from "../../utils/errorsHandlets";
+import { showModal } from "../../controllers/modal.controller";
+import { resetTimers } from "../../modals/timmer.modal";
 
 const setupEventListeners = () => {
   if (generationCmb && typeCmb) {
@@ -136,6 +143,8 @@ const setupEventListeners = () => {
   btnBack.addEventListener("click", () => {
     pokemonInfoInput.value = "";
     NavigateToHome();
+    initializeErrorHandler();
+    checkMoreResultsBtn();
     changeStateDescriptionContainer(true);
   });
 
@@ -143,6 +152,33 @@ const setupEventListeners = () => {
     button.addEventListener("click", () => {
       changeStateDescriptionContainer(true);
     });
+  });
+
+  transferenceBtn.addEventListener("click", () => {
+    showModal();
+    dialog.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  // dialog.addEventListener("click", (event: MouseEvent) => {
+  //   const rect = dialog.getBoundingClientRect();
+  //   const isInDialog =
+  //     event.clientX >= rect.left &&
+  //     event.clientX <= rect.right &&
+  //     event.clientY >= rect.top &&
+  //     event.clientY <= rect.bottom;
+  //   if (!isInDialog) {
+  //     resetTimers();
+  //     dialog.close();
+  //   }
+  // });
+
+  dialog.addEventListener("cancel", (e: Event) => {
+    e.preventDefault();
+  });
+
+  closeModalBtn.addEventListener("click", () => {
+    resetTimers();
+    dialog.close();
   });
 };
 
